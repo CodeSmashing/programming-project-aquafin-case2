@@ -1,0 +1,39 @@
+@import url("./animations.css");
+@import url("./colors.css");
+@import url("./font.css");
+@import url("./queries.css");
+
+:root {}
+
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	margin: 0;
+}
+
+header {}
+
+nav {}
+
+main {}
+
+footer {}
+
+input,
+[type="text"],
+[type="email"],
+[type="submit"],
+[type="search"],
+[type="file"],
+textarea,
+select {}
+
+[type="submit"],
+select,
+option {}
+
+
+*.hidden {
+	display: none;
+}

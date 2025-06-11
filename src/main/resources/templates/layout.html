@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns:th="http://www.thymeleaf.org">
+
+	<header th:insert="~{layout :: main_menu}"></header>
+
+	<nav th:fragment="main_menu">
+		<ul>
+			<li>
+				<a th:href="@{/index}" class="current">Case 2 demo</a>
+			</li>
+			<li>
+				<a th:href="@{/data-raw}">Ruwe data</a>
+			</li>
+
+			<!-- <li>
+				<a
+					th:text="#{switch-en}"
+					th:href="@{${requestURI}(lang='en')}"></a>
+			</li>
+			<li>
+				<a
+					th:text="#{switch-fr}"
+					th:href="@{${requestURI}(lang='fr')}"></a>
+			</li> -->
+		</ul>
+	</nav>
+
+	<footer>
+		<!-- <span th:text="${currentDate}"></span> -->
+		<p>&copy;
+			Aquafin. Alle rechten voorbehouden.</p>
+	</footer>
