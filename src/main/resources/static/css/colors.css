@@ -1,1 +1,84 @@
+:root {
+	color-scheme: light;
 
+	--light-color-primary: #FFFFFF;
+	--light-color-secondary: #6D6D6D;
+	--light-color-tertiary: #000000;
+	--light-color-accent: #222222;
+	--light-color-text: #000000;
+	--light-color-text-contrast: #FFFFFF;
+	--light-color-shadow: #00000080;
+
+	--dark-color-primary: #000000;
+	--dark-color-secondary: #6D6D6D;
+	--dark-color-tertiary: #FFFFFF;
+	--dark-color-accent: #595959;
+	--dark-color-text: #FFFFFF;
+	--dark-color-text-contrast: #000000;
+	--dark-color-shadow: #00000080;
+
+	--color-primary: light-dark(var(--light-color-primary), var(--dark-color-primary));
+	--color-secondary: light-dark(var(--light-color-secondary), var(--dark-color-secondary));
+	--color-tertiary: light-dark(var(--light-color-tertiary), var(--dark-color-tertiary));
+	--color-accent: light-dark(var(--light-color-accent), var(--dark-color-accent));
+	--color-text: light-dark(var(--light-color-text), var(--dark-color-text));
+	--color-text-contrast: light-dark(var(--light-color-text-contrast), var(--dark-color-text-contrast));
+	--color-shadow: light-dark(var(--light-color-shadow), var(--dark-color-shadow));
+
+	/* Color palette background */
+	--background-primary: var(--color-primary);
+	--background-secondary: var(--color-secondary);
+	--background-tertiary: var(--color-tertiary);
+	--background-secondary-light: color-mix(in srgb, var(--color-secondary) 50%, white);
+	--background-button: ;
+	--background-horizontal: ;
+	--background-disabled: ;
+	--background-disabled-hover: ;
+	--background-input: ;
+	--background-input-error: ;
+	--background-input-file: ;
+	--background-input-file-hover: ;
+	--border: var(--color-shadow);
+
+	/* Color palette text */
+	--text: var(--color-text);
+	--text-contrast: var(--color-text-contrast);
+	--text-button: ;
+	--text-anchor: ;
+
+	/* Color palette background hover*/
+	--background-button-hover: ;
+	--background-input-hover: ;
+}
+
+a,
+p {
+	color: var(--text);
+}
+
+a.current {
+	color: var(--text-contrast);
+}
+
+body {
+	background-color: var(--background-primary);
+	color: var(--color-text);
+}
+
+header {
+	background-color: var(--background-secondary);
+	color: var(--text-contrast);
+}
+
+footer {
+	background-color: var(--background-secondary);
+	color: var(--text-contrast);
+}
+
+table {
+	background-color: var(--background-secondary-light);
+}
+
+h3 {
+	background-color: var(--background-secondary-light);
+}

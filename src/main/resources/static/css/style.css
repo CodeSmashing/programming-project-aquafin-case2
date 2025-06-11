@@ -3,7 +3,15 @@
 @import url("./font.css");
 @import url("./queries.css");
 
-:root {}
+:root {
+	--height-max-main: 80vh;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
 
 body {
 	display: flex;
@@ -16,9 +24,22 @@ header {}
 
 nav {}
 
-main {}
+main {
+	flex: 1;
+	max-height: var(--height-max-main);
+	align-self: center;
+	align-content: center;
+	overflow-y: scroll;
+}
 
-footer {}
+footer {
+	margin-top: auto;
+}
+
+h3 {
+	padding: 20px 10px;
+	margin: 0;
+}
 
 input,
 [type="text"],
@@ -33,6 +54,14 @@ select {}
 select,
 option {}
 
+button {
+	padding: 10px 20px;
+}
+
+table {
+	padding: 20px;
+	margin-bottom: 50px;
+}
 
 *.hidden {
 	display: none;

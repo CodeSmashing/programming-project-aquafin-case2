@@ -38,3 +38,6 @@ build/
 
 ### Extra ###
 staged_changes.diff
+.markdownlint.json
+cspell.json
+/.cspell

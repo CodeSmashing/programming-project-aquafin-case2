@@ -7,7 +7,12 @@
 	<nav th:fragment="main_menu">
 		<ul>
 			<li>
-				<a th:href="@{/index}" class="current">Case 2 demo</a>
+				<a th:href="@{/index}">
+					<img src alt="Logo">
+				</a>
+			</li>
+			<li>
+				<a th:href="@{/index}" class="current">Thuis</a>
 			</li>
 			<li>
 				<a th:href="@{/data-raw}">Ruwe data</a>
@@ -28,6 +33,9 @@
 
 	<footer>
 		<!-- <span th:text="${currentDate}"></span> -->
+		<a th:href="@{/index}">
+			<img src alt="Logo">
+		</a>
 		<p>&copy;
 			Aquafin. Alle rechten voorbehouden.</p>
 	</footer>
