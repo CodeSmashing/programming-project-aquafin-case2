@@ -13,7 +13,43 @@
 
 	<body>
 		<div th:replace="~{layout :: header}"></div>
-
+		<h1>Jaarlijkse Neerslaggegevens</h1>
+		<table>
+			<thead>
+				<tr>
+					<th>Jaar</th>
+					<th>Jan</th>
+					<th>Feb</th>
+					<th>Mrt</th>
+					<th>Apr</th>
+					<th>Mei</th>
+					<th>Jun</th>
+					<th>Jul</th>
+					<th>Aug</th>
+					<th>Sep</th>
+					<th>Okt</th>
+					<th>Nov</th>
+					<th>Dec</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="rainfall : ${rainfallList}">
+					<td th:text="${rainfall.year}"></td>
+					<td th:text="${rainfall.january}"></td>
+					<td th:text="${rainfall.february}"></td>
+					<td th:text="${rainfall.march}"></td>
+					<td th:text="${rainfall.april}"></td>
+					<td th:text="${rainfall.may}"></td>
+					<td th:text="${rainfall.june}"></td>
+					<td th:text="${rainfall.july}"></td>
+					<td th:text="${rainfall.august}"></td>
+					<td th:text="${rainfall.september}"></td>
+					<td th:text="${rainfall.october}"></td>
+					<td th:text="${rainfall.november}"></td>
+					<td th:text="${rainfall.december}"></td>
+				</tr>
+			</tbody>
+		</table>
 		<div th:replace="~{layout :: footer}"></div>
 	</body>
 </html>

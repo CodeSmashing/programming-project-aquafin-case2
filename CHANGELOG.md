@@ -5,6 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project (tries) to adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.0] - 2025-06-12
+
+### Added
+
+- Added `YearConverter` to convert the database column of type `year` to a valid Java instance of type `Year` and vice versa.
+- Added `Flood` and `Rainfall` model entities with validated columns and width obligatory getters and setters.
+- Added `FloodDAO` and `RainfallDAO` for CRUD operations.
+
+### Updated
+
+- Updated `README` with sections:
+  - **Project Overview**: A brief overview of the framework used.
+  - **Getting Started**:
+    - **Dependencies**: List of dependencies used.
+	 - **Setup**: Detailed instructions on downloading, installing and building the project for local use.
+	 - **Notes**: Additional notes regarding setup instructions.
+  - **Usage**: Instructions on where to access the application in the browser.
+  - **Used Documentation / Referenced Help**: Resources referenced during development.
+  - **Licenses**: Licensing information.
+- Updated `APIController` to handle GET requests for `""` and `"/"` for testing purposes, and `"/data-raw/all"` for retrieving all rainfall data from the database.
+- Updated `WebController` to handle GET requests for `"/data-raw/{year}"` (to retrieve rainfall data far a specific year) and `"/data-raw/all"` (to retrieve all rainfall data from the database).
+- Updated `data-raw.html` to use Thymeleaf templating for displaying rainfall table information.
+
 ## [0.2.0] - 2025-06-12
 
 ### Updated
@@ -43,6 +66,7 @@ and this project (tries) to adhere to [Semantic Versioning](https://semver.org/s
 - [Git Ignore](.gitignore) and [Git Attributes](.gitattributes) for repository management.
 - [MIT license](LICENSE)
 
+[1.0.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.0.0
 [0.2.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v0.2.0
 [0.1.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v0.1.0
 [0.0.1]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v0.0.1
