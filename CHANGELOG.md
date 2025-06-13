@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project (tries) to adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2025-06-13
+
+### Fixed
+
+- Change `FloodDAO` and `RainfallDAO` identifiers to be of type `Year` to match database.
+- Change table name reference in `Flood` and `Rainfall` models to be non-capitalized, database changed accordingly.
+
 ## [1.0.0] - 2025-06-12
 
 ### Added
@@ -19,8 +26,8 @@ and this project (tries) to adhere to [Semantic Versioning](https://semver.org/s
   - **Project Overview**: A brief overview of the framework used.
   - **Getting Started**:
     - **Dependencies**: List of dependencies used.
-	 - **Setup**: Detailed instructions on downloading, installing and building the project for local use.
-	 - **Notes**: Additional notes regarding setup instructions.
+   	- **Setup**: Detailed instructions on downloading, installing and building the project for local use.
+   	- **Notes**: Additional notes regarding setup instructions.
   - **Usage**: Instructions on where to access the application in the browser.
   - **Used Documentation / Referenced Help**: Resources referenced during development.
   - **Licenses**: Licensing information.

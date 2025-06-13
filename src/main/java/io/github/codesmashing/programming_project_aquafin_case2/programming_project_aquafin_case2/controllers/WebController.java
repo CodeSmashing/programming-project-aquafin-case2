@@ -1,5 +1,6 @@
 package io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.controllers;
 
+import java.time.Year;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,7 @@ public class WebController {
 	}
 
 	@GetMapping("/data-raw/{year}")
-	public ResponseEntity<Rainfall> getRainfall(@PathVariable("year") Integer year) {
+	public ResponseEntity<Rainfall> getRainfall(@PathVariable("year") Year year) {
 		Optional<Rainfall> rainfallOptional = rainfallDAO.findById(year);
 		if (rainfallOptional.isEmpty()) {
 			return ResponseEntity.notFound().build();
@@ -47,8 +48,6 @@ public class WebController {
 
 	@GetMapping("/data-raw/all")
 	public ResponseEntity<Iterable<Rainfall>> getRainfallAll() {
-		Iterable<Rainfall> rainfallList = rainfallDAO.findAll();
-
-		return ResponseEntity.ok(rainfallList);
+		return ResponseEntity.ok(rainfallDAO.findAll());
 	}
 }

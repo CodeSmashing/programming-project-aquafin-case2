@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.converters.YearConverter;
 
 @Entity
-@Table(name = "Overstromingsberekeningen")
+@Table(name = "overstromingsberekeningen")
 public class Flood {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

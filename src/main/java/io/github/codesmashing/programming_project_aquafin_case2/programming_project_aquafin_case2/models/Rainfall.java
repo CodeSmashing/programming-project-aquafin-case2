@@ -16,7 +16,7 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 
 @Entity
-@Table(name = "Jaarlijkseneerslagdata")
+@Table(name = "jaarlijkseneerslagdata")
 public class Rainfall {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
