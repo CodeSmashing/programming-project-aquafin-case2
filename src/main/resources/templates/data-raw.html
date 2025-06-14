@@ -11,7 +11,7 @@
 		<link rel="icon" href="data:image/png;base64,iVBORw0KGgo=">
 	</head>
 
-	<body>
+	<body data-page="data-raw">
 		<div th:replace="~{layout :: header}"></div>
 		<h1>Jaarlijkse Neerslaggegevens</h1>
 		<table>
@@ -51,5 +51,6 @@
 			</tbody>
 		</table>
 		<div th:replace="~{layout :: footer}"></div>
+		<script type="text/javascript" th:src="@{/js/init.js}"></script>
 	</body>
 </html>

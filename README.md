@@ -99,6 +99,7 @@ ___
 - [Contributors (using contrib.rocks)](https://contrib.rocks).
 - [JPA Query's](https://docs.spring.io/spring-data/jpa/reference/jpa/query-methods.html).
 - [W3School (Java)](https://www.w3schools.com/java/).
+- [Dynamic module loading](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules#dynamic_module_loading).
 
 ___
 
