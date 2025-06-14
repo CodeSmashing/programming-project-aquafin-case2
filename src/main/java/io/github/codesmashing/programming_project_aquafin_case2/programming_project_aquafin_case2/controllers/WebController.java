@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,13 +27,25 @@ public class WebController {
 		this.floodDAO = floodDAO;
 	}
 
+	@ModelAttribute("rainfallList")
+	public Iterable<Rainfall> getRainfallList() {
+		return rainfallDAO.findAll();
+	}
+
+	@ModelAttribute("rainfallYoungest")
+	public Rainfall getYoungestRainfall() {
+		return rainfallDAO.findYoungest();
+	}
+
 	@GetMapping({ "", "/", "/index" })
 	public String showIndex() {
 		return "index";
 	}
 
-	@GetMapping({ "/data-raw" })
-	public String showRawData() {
+	@GetMapping({ "/data-raw", "/data-raw/" })
+	public String showRawData(ModelMap map) {
+		Integer stepCount = (int) Math.ceil((double) rainfallDAO.findLargest() / 10);
+		map.put("rainfallTableRulerSteps", stepCount);
 		return "data-raw";
 	}
 

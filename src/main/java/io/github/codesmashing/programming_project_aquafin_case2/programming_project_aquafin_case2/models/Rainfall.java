@@ -222,4 +222,55 @@ public class Rainfall {
 	public void setDecember(Integer december) {
 		this.december = december;
 	}
+
+	// Methods
+	public Integer getLargestRainfall() {
+		int tempMax = this.january;
+
+		if (tempMax < this.february) {
+			tempMax = this.february;
+		}
+
+		if (tempMax < this.march) {
+			tempMax = this.march;
+		}
+
+		if (tempMax < this.april) {
+			tempMax = this.april;
+		}
+
+		if (tempMax < this.may) {
+			tempMax = this.may;
+		}
+
+		if (tempMax < this.june) {
+			tempMax = this.june;
+		}
+
+		if (tempMax < this.july) {
+			tempMax = this.july;
+		}
+
+		if (tempMax < this.august) {
+			tempMax = this.august;
+		}
+
+		if (tempMax < this.september) {
+			tempMax = this.september;
+		}
+
+		if (tempMax < this.october) {
+			tempMax = this.october;
+		}
+
+		if (tempMax < this.november) {
+			tempMax = this.november;
+		}
+
+		if (tempMax < this.december) {
+			tempMax = this.december;
+		}
+
+		return tempMax;
+	}
 }
