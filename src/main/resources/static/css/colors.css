@@ -75,8 +75,25 @@ footer {
 	color: var(--text-contrast);
 }
 
-table {
+table#rainfallTableBarChart {
 	background-color: var(--background-secondary-light);
+
+	thead {
+		background-color: var(--background-secondary);
+		color: var(--text-contrast);
+	}
+
+	tbody {
+		[data-bar-value] {
+			/* Temporary */
+			background-color: red;
+		}
+	}
+
+	tfoot {
+		background-color: var(--background-secondary);
+		color: var(--text-contrast);
+	}
 }
 
 h3 {
