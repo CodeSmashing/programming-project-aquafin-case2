@@ -32,11 +32,9 @@ ___
    - Download the `.zip` file containing the project.
    - Extract the contents to your desired directory.
 
-
 2. **Install Java and Maven**
    - Ensure you have **Java 17** (or the version specified in the `pom.xml`) installed.
    - Install **Maven** (or use the included Maven Wrapper `mvnw`/`mvnw.cmd`).
-
 
 3. **Configure the Database**
    - Update the database connection details in `src/main/resources/application.properties`:
@@ -71,7 +69,6 @@ ___
 
 ___
 
-
 ### Notes
 
 - Ensure MySQL is running and the database is created before starting the application.
@@ -86,9 +83,22 @@ ___
 
 ___
 
+## Contributors
+
+<a href="https://github.com/CodeSmashing/programming-project-aquafin-case2/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=CodeSmashing/programming-project-aquafin-case2" />
+</a>
+
+___
+
 ## Used documentation / referenced help
 
 - [Year convertor](https://github.com/joschaBurkholz/jpa-attribute-converter/blob/master/src/main/java/de/joschaburkholz/jpaattributeconverter/YearConverter.java).
+- [Example bar charts](https://www.pinterest.com/pin/458733912049295230/).
+- [Example bar charts](https://www.pinterest.com/pin/49680402135788243/).
+- [Contributors (using contrib.rocks)](https://contrib.rocks).
+- [JPA Query's](https://docs.spring.io/spring-data/jpa/reference/jpa/query-methods.html).
+- [W3School (Java)](https://www.w3schools.com/java/).
 
 ___
 
