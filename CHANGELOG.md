@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project (tries) to adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2025-06-17
+
+### Added
+
+- Added `Month` and `Season` models to represent monthly and seasonal rainfall data.
+- Added `MonthDAO` and `SeasonDAO` for CRUD operations on `Month` and `Season` entities.
+- Updated `Flood` model to include relationships with `Season` entities (`winter`, `spring`, `summer`, `fall`).
+- Updated `APIController` and `WebController` to use `MonthDAO` and `SeasonDAO` for rainfall data retrieval.
+- Added Thymeleaf `@ModelAttribute` method in `WebController`, attribute being `rainfallList` to provide seasonal rainfall data to templates.
+
+### Updated
+
+- Renamed `RainfallDAO` to `SeasonDAO` to better reflect its purpose.
+- Updated `FloodDAO` and `SeasonDAO` to handle relationships between `Flood`, `Season`, and `Month` entities.
+
 ## [1.0.2] - 2025-06-14
 
 ### Added
@@ -81,6 +96,7 @@ and this project (tries) to adhere to [Semantic Versioning](https://semver.org/s
 - [Git Ignore](.gitignore) and [Git Attributes](.gitattributes) for repository management.
 - [MIT license](LICENSE)
 
+[1.1.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.1.0
 [1.0.2]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.0.2
 [1.0.1]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.0.0
 [1.0.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.0.0

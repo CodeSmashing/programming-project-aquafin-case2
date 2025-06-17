@@ -1,17 +1,27 @@
 package io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.models;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 
 import java.time.Year;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.converters.YearConverter;
+import io.micrometer.common.lang.Nullable;
 
 @Entity
-@Table(name = "overstromingsberekeningen")
+@Table(name = "overstromingsgevaren")
 public class Flood {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,84 +29,99 @@ public class Flood {
     @Convert(converter = YearConverter.class)
     private Year year;
 
-    @NotNull(message = "Season cannot be null")
-    @Column(name = "seizoen")
-    @Size(max = 20, message = "Season name length cannot exceed 20 characters.")
-    private String season;
-
-    @NotNull(message = "Months cannot be null")
-    @Column(name = "maanden")
-    @Size(max = 20, message = "Months string length cannot exceed 20 characters.")
-    private String months;
-
-    @NotNull(message = "Total cannot be null")
-    @Column(name = "totaal")
-    private Integer total;
-
-    @NotNull(message = "GuideValue cannot be null")
-    @Column(name = "richtwaarde")
-    private Integer guideValue;
-
+    @Nullable
     @OneToOne
-    @JoinColumn(name = "data_id", referencedColumnName = "jaar")
+    @JoinColumn(name = "winter_id", referencedColumnName = "id")
     @JsonManagedReference
-    private Rainfall rainfall;
+    private Season winter;
+
+    @Nullable
+    @OneToOne
+    @JoinColumn(name = "lente_id", referencedColumnName = "id")
+    @JsonManagedReference
+    private Season spring;
+
+    @Nullable
+    @OneToOne
+    @JoinColumn(name = "zomer_id", referencedColumnName = "id")
+    @JsonManagedReference
+    private Season summer;
+
+    @Nullable
+    @OneToOne
+    @JoinColumn(name = "herfst_id", referencedColumnName = "id")
+    @JsonManagedReference
+    private Season fall;
+
+    @NotNull(message = "Guide value cannot be null")
+    @Column(name = "richtwaarde")
+    @Max(value = 100, message = "Guide value cannot exceed 100")
+    @Min(value = 0, message = "Guide value cannot be less than 0")
+    private Float guideValue;
 
     public Flood() {
     }
 
-    public Flood(Year year, String season, String months, Integer total, Integer guideValue) {
+    public Flood(Year year, Season winter, Season spring, Season summer, Season fall,
+            @NotNull(message = "Guide value cannot be null") Float guideValue) {
         this.year = year;
-        this.season = season;
-        this.months = months;
-        this.total = total;
+        this.winter = winter;
+        this.spring = spring;
+        this.summer = summer;
+        this.fall = fall;
         this.guideValue = guideValue;
     }
 
-    // Getters
     public Year getYear() {
-        return this.year;
+        return year;
     }
 
-    public String getSeason() {
-        return this.season;
-    }
-
-    public String getMonths() {
-        return months;
-    }
-
-    public Integer getTotal() {
-        return total;
-    }
-
-    public Integer getGuideValue() {
-        return guideValue;
-    }
-
-    // Setters
     public void setYear(Year year) {
         this.year = year;
     }
 
-    public void setSeason(String season) {
-        this.season = season;
+    public Season getWinter() {
+        return winter;
     }
 
-    public void setMonths(String months) {
-        this.months = months;
+    public void setWinter(Season winter) {
+        this.winter = winter;
     }
 
-    public void setTotaal(Integer total) {
-        this.total = total;
+    public Season getSpring() {
+        return spring;
     }
 
-    public void setGuideValue(Integer guideValue) {
+    public void setSpring(Season spring) {
+        this.spring = spring;
+    }
+
+    public Season getSummer() {
+        return summer;
+    }
+
+    public void setSummer(Season summer) {
+        this.summer = summer;
+    }
+
+    public Season getFall() {
+        return fall;
+    }
+
+    public void setFall(Season fall) {
+        this.fall = fall;
+    }
+
+    public Float getGuideValue() {
+        return guideValue;
+    }
+
+    public void setGuideValue(Float guideValue) {
         this.guideValue = guideValue;
     }
 
-    // Optionele businesslogica
-    public boolean isMoreThenGuide() {
-        return this.total != null && this.guideValue != null && this.total.compareTo(this.guideValue) > 0;
-    }
+    // public boolean isMoreThenGuide() {
+    // return this.total != null && this.guideValue != null &&
+    // this.total.compareTo(this.guideValue) > 0;
+    // }
 }

@@ -6,20 +6,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.models.Rainfall;
+import io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.models.Flood;
 import io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.models.DAO.FloodDAO;
-import io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.models.DAO.RainfallDAO;
+import io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.models.DAO.MonthDAO;
+import io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.models.DAO.SeasonDAO;
 
 @RestController
 @RequestMapping("/api")
 public class APIController {
-	private final RainfallDAO rainfallDAO;
 	private final FloodDAO floodDAO;
+	private final SeasonDAO seasonDAO;
+	private final MonthDAO monthDAO;
 
 	@Autowired
-	public APIController(RainfallDAO rainfallDAO, FloodDAO floodDAO) {
-		this.rainfallDAO = rainfallDAO;
+	public APIController(SeasonDAO seasonDAO, FloodDAO floodDAO, MonthDAO monthDAO) {
+		this.seasonDAO = seasonDAO;
 		this.floodDAO = floodDAO;
+		this.monthDAO = monthDAO;
 	}
 
 	@GetMapping({ "", "/" })
@@ -28,8 +31,8 @@ public class APIController {
 	}
 
 	@GetMapping("/data-raw/all")
-	public ResponseEntity<Iterable<Rainfall>> getAllRainfallData() {
-		return ResponseEntity.ok(rainfallDAO.findAll());
+	public ResponseEntity<Iterable<Flood>> getAllRainfallData() {
+		return ResponseEntity.ok(floodDAO.findAll());
 	}
 
 }
