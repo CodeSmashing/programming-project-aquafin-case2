@@ -11,56 +11,58 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.models.Rainfall;
 import io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.models.Flood;
+import io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.models.Season;
 import io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.models.DAO.FloodDAO;
-import io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.models.DAO.RainfallDAO;
+import io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.models.DAO.MonthDAO;
+import io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.models.DAO.SeasonDAO;
 
 @Controller
 public class WebController {
-	private final RainfallDAO rainfallDAO;
 	private final FloodDAO floodDAO;
+	private final SeasonDAO seasonDAO;
+	private final MonthDAO monthDAO;
 
 	@Autowired
-	public WebController(RainfallDAO rainfallDAO, FloodDAO floodDAO) {
-		this.rainfallDAO = rainfallDAO;
+	public WebController(SeasonDAO seasonDAO, FloodDAO floodDAO, MonthDAO monthDAO) {
+		this.seasonDAO = seasonDAO;
 		this.floodDAO = floodDAO;
+		this.monthDAO = monthDAO;
 	}
 
 	@ModelAttribute("rainfallList")
-	public Iterable<Rainfall> getRainfallList() {
-		return rainfallDAO.findAll();
+	public Iterable<Season> getRainfallList() {
+		return seasonDAO.findAll();
 	}
 
-	@ModelAttribute("rainfallYoungest")
-	public Rainfall getYoungestRainfall() {
-		return rainfallDAO.findYoungest();
-	}
+	// @ModelAttribute("rainfallYoungest")
+	// public Rainfall getYoungestRainfall() {
+	// return monthDAO.findYoungest();
+	// }
 
 	@GetMapping({ "", "/", "/index" })
 	public String showIndex() {
 		return "index";
 	}
 
-	@GetMapping({ "/data-raw", "/data-raw/" })
-	public String showRawData(ModelMap map) {
-		Integer stepCount = (int) Math.ceil((double) rainfallDAO.findLargest() / 10);
-		map.put("rainfallTableRulerSteps", stepCount);
-		return "data-raw";
-	}
+	// @GetMapping({ "/data-raw", "/data-raw/", "/data-raw/" })
+	// public String showRawData(ModelMap mapModelMap map) {
+	// Integer stepCount = (int) Math.ceil((double) rainfallDAO.findLargest() / 10);
+	// map.put("rainfallTableRulerSteps", stepCount);
+	// }
 
 	@GetMapping("/data-raw/{year}")
-	public ResponseEntity<Rainfall> getRainfall(@PathVariable("year") Year year) {
-		Optional<Rainfall> rainfallOptional = rainfallDAO.findById(year);
-		if (rainfallOptional.isEmpty()) {
+	public ResponseEntity<Season> getRainfall(@PathVariable("year") Year year) {
+		Optional<Season> seasonOptional = seasonDAO.findById(year);
+		if (seasonOptional.isEmpty()) {
 			return ResponseEntity.notFound().build();
 		}
 
-		return ResponseEntity.ok(rainfallOptional.get());
+		return ResponseEntity.ok(seasonOptional.get());
 	}
 
 	@GetMapping("/data-raw/all")
-	public ResponseEntity<Iterable<Rainfall>> getRainfallAll() {
-		return ResponseEntity.ok(rainfallDAO.findAll());
+	public ResponseEntity<Iterable<Season>> getSeasonAll() {
+		return ResponseEntity.ok(seasonDAO.findAll());
 	}
 }
