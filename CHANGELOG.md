@@ -52,6 +52,12 @@ and this project (tries) to adhere to [Semantic Versioning](https://semver.org/s
 
 - Updated `WebController` to calculate and pass `rainfallTableRulerSteps` to the `data-raw` view for dynamic table ruler generation.
 
+## [1.1.1] - 2025-06-17
+
+### Removed
+
+- Removed `Rainfall` model.
+
 ## [1.1.0] - 2025-06-17
 
 ### Added
@@ -144,6 +150,7 @@ and this project (tries) to adhere to [Semantic Versioning](https://semver.org/s
 - [MIT license](LICENSE)
 
 <!-- [Unreleased]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v -->
+[1.1.1]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.1.1
 [1.1.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.1.0
 [1.0.2]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.0.2
 [1.0.1]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.0.0
