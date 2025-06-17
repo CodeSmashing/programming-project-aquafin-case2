@@ -5,8 +5,33 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project (tries) to adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased] - 2025-06-18
 
-## [1.2.0] - 2025-06-17
+### Updated
+
+- Replaced tag references for commits related to the branch `data-overview-user` with a `Unreleased` tag.
+- Refactored `colors.css` to:
+  - Expand the color palette and fix light/dark theme support.
+  - Use `background-color` instead of `background` for background colors.
+  - Include commonly used colors used so far throughout the CSS.
+  - Group related styling together (nav element specific styling is brought under `nav`, input and it's variation under `input`, ...).
+  - Remove extra nav bar related classes.
+- Enhanced `font.css` by removing anchor decorations.
+- Improved `style.css` by:
+  - Removing unused import for `./test.css`.
+  - Removing font related styling (text-alignment excluded).
+  - Moving box shadow styling to `colors.css`
+  - Group related styling together (nav element specific styling is brought under `nav`, input and it's variation under `input`, ...).
+  - Removing extra nav bar related classes.
+- Updated `data-raw.html` and `index.html` to include dynamic chart rendering using Chart.js and updated table styling.
+- Updated `layout.html` to include a new logo and reverted navigation structure to before the extra nav classes.
+- Added `Logo_Aquafin.png` to the project for branding purposes.
+
+### Fixed
+
+- Corrected inconsistencies in CSS variables, their uses and hover effects for better user experience.
+
+## [Unreleased] - 2025-06-17
 
 ### Updated
 
@@ -129,7 +154,7 @@ and this project (tries) to adhere to [Semantic Versioning](https://semver.org/s
 - [Git Ignore](.gitignore) and [Git Attributes](.gitattributes) for repository management.
 - [MIT license](LICENSE)
 
-[1.2.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.2.0
+<!-- [Unreleased]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v -->
 [1.1.2]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.1.2
 [1.1.1]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.1.1
 [1.1.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.1.0

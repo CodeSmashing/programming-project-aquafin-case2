@@ -1,97 +1,88 @@
 <!DOCTYPE html>
 <html lang="nl" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Case 2 demo</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Case 2 demo</title>
 
-    <link rel="stylesheet" th:href="@{/css/style.css}" />
-    <link rel="icon" href="data:image/png;base64,iVBORw0KGgo=" />
-</head>
-<body>
-    <div th:replace="~{layout :: header}"></div>
+        <link rel="stylesheet" th:href="@{/css/style.css}" />
+        <link rel="icon" th:href="@{/images/Logo_Aquafin.png}" />
+    </head>
+    <body>
+        <div th:replace="~{layout :: header}"></div>
 
-    <main class="container">
-        <h3>🌧️ Seizoensneerslag en Overstromingsgevaar</h3>
+        <main class="container">
+            <h3>🌧️ Seizoensneerslag en Overstromingsgevaar</h3>
 
-        
-        <form action="/" method="get" class="filter-form">
-            <input
-                type="number"
-                name="jaar"
-                th:value="${selectedYear}"
-                placeholder="Vul jaar in"
-            />
-            <button>Toepassen</button>
-        </form>
+            <form action="/" method="get" class="filter-form">
+                <input
+                    type="number"
+                    name="jaar"
+                    th:value="${selectedYear}"
+                    placeholder="Vul jaar in" />
+                <button>Toepassen</button>
+            </form>
 
-     
-        <section class="chart-section">
-            <h4>
-                Diagram incidenten voor
-                <span th:text="${selectedYear}">2020</span>
-            </h4>
-            <canvas id="incidentenChart" width="400" height="200"></canvas>
-        </section>
+            <section class="chart-section">
+                <h4>
+                    Diagram incidenten voor
+                    <span th:text="${selectedYear}">2020</span>
+                </h4>
+                <canvas id="myChart" width="400" height="200"></canvas>
+            </section>
 
-        
-        <section class="table-section">
-            <h4>Tabel overstromingen</h4>
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>Jaar</th>
-                        <th>Seizoen</th>
-                        <th>Richtwaarde</th>
-                        <th>Gevaar (Ja/Nee)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="item : ${overstromingen}">
-                        <td th:text="${item.jaar}">Jaar</td>
-                        <td th:text="${item.seizoen}">Seizoen</td>
-                        <td th:text="${item.richtwaarde}">Richtwaarde</td>
-                        <td
-                            th:text="${item.gevaar}"
-                            th:classappend="${item.gevaar == 'Ja' ? 'bad' : 'good'}"
-                        >
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <section>
+                <h4>Tabel overstromingen</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Jaar</th>
+                            <th>Seizoen</th>
+                            <th>Richtwaarde</th>
+                            <th>Gevaar (Ja/Nee)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="item : ${overstromingen}">
+                            <td th:text="${item.jaar}">Jaar</td>
+                            <td th:text="${item.seizoen}">Seizoen</td>
+                            <td th:text="${item.richtwaarde}">Richtwaarde</td>
+                            <td
+                                th:text="${item.gevaar}"
+                                th:classappend="${item.gevaar == 'Ja' ? 'bad' : 'good'}">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
 
+                <button>Toon Meer</button>
+            </section>
+        </main>
 
-            <button>Toon Meer</button>
-        </section>
-    </main>
+        <div th:replace="~{layout :: footer}"></div>
 
-    <div th:replace="~{layout :: footer}"></div>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+          const ctx = document.getElementById('myChart');
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/chart.min.js"></script>
-    <script th:inline="javascript">
-        var incidenten = /*[[${incidenten}]]*/ [];
-
-        var labels = incidenten.map(function (item) {
-            return item.jaar;
-        });
-        var data = incidenten.map(function (item) {
-            return item.incidenten;
-        });
-
-        new Chart(document.getElementById("incidentenChart"), {
-            type: "bar",
+          new Chart(ctx, {
+            type: 'bar',
             data: {
-                labels: labels,
-                datasets: [
-                    {
-                        label: "Incidenten",
-                        data: data,
-                        backgroundColor: "rgba(100, 100, 200, 0.5)",
-                    },
-                ],
+              labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+              datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 5, 2, 3],
+                borderWidth: 1
+              }]
             },
-            options: { responsive: true },
-        });
-    </script>
-</body>
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+        </script>
+    </body>
 </html>
