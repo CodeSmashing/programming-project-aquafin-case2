@@ -4,38 +4,34 @@
 
 	<header th:insert="~{layout :: main_menu}"></header>
 
-	<nav th:fragment="main_menu">
-		<ul>
-			<li>
-				<a th:href="@{/index}">
-					<img src alt="Logo">
-				</a>
-			</li>
-			<li>
-				<a th:href="@{/index}" class="current">Thuis</a>
-			</li>
-			<li>
-				<a th:href="@{/data-raw}">Ruwe data</a>
-			</li>
-
-			<!-- <li>
-				<a
-					th:text="#{switch-en}"
-					th:href="@{${requestURI}(lang='en')}"></a>
-			</li>
-			<li>
-				<a
-					th:text="#{switch-fr}"
-					th:href="@{${requestURI}(lang='fr')}"></a>
-			</li> -->
-		</ul>
+	<nav th:fragment="main_menu" class="navbar">
+		<div class="nav-container">
+			<ul class="nav-list">
+				<li class="nav-item logo">
+					<a th:href="@{/index}">
+						<img src="/images/logo.png" alt="Logo" class="nav-logo" />
+					</a>
+				</li>
+				<li class="nav-item">
+					<a th:href="@{/index}" class="nav-link current">Thuis</a>
+				</li>
+			
+	
+				<!--
+				<li class="nav-item">
+					<a th:text="#{switch-en}" th:href="@{${requestURI}(lang='en')}" class="nav-link"></a>
+				</li>
+				<li class="nav-item">
+					<a th:text="#{switch-fr}" th:href="@{${requestURI}(lang='fr')}" class="nav-link"></a>
+				</li>
+				-->
+			</ul>
+		</div>
 	</nav>
 
 	<footer>
 		<!-- <span th:text="${currentDate}"></span> -->
-		<a th:href="@{/index}">
-			<img src alt="Logo">
-		</a>
+		
 		<p>&copy;
 			Aquafin. Alle rechten voorbehouden.</p>
 	</footer>

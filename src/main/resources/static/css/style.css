@@ -2,6 +2,7 @@
 @import url("./colors.css");
 @import url("./font.css");
 @import url("./queries.css");
+@import url("./test.css");
 
 :root {
 	--height-max-main: 80vh;
@@ -18,11 +19,52 @@ body {
 	flex-direction: column;
 	min-height: 100vh;
 	margin: 0;
+	font-family: Arial, sans-serif;
 }
 
-header {}
+header {
+	padding: 20px;
+    text-align: center;
+}
 
-nav {}
+nav {
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 6px (0, 0, 0, 0.1);
+}
+
+.navbar {
+	padding: 1rem 2rem;
+	box-shadow: 0 2px 6px(0, 0, 0, 0.1);
+}
+
+.nav-container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.nav-list {
+	list-style: none;
+	display: flex;
+	gap: 2rem;
+	margin: 0;
+	padding: 0;
+}
+
+.nav-item a,
+.nav-link {
+text-decoration: none;
+font-weight: 500;
+transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.current {
+
+}
 
 main {
 	flex: 1;
@@ -30,16 +72,62 @@ main {
 	align-self: center;
 	align-content: center;
 	overflow-y: scroll;
+	width: 100%;
+    padding: 20px;
+	border-radius: 8px;
+	box-sizing: border-box;
+	box-shadow: 0 2px 5px;
 }
 
 footer {
 	margin-top: auto;
+	padding: 20px;
+    text-align: center;
 }
 
 h3 {
 	padding: 20px 10px;
 	margin: 0;
+	margin-bottom: 20px;
 }
+
+h4 {
+	padding: 20px 10px;
+	margin: 0;
+	margin-bottom: 20px;
+}
+
+form {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px;
+}
+
+form input {
+    padding: 8px 12px;
+    border: 1px solid;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+form input::placeholder {
+    
+}
+
+form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px;
+    transition: 0.3s ease-in-out;
+}
+
+form button:hover {
+    
+}
+
 
 input,
 [type="text"],
@@ -54,15 +142,55 @@ select {}
 select,
 option {}
 
-button {
-	padding: 10px 20px;
-}
 
 table {
 	padding: 20px;
-	margin-bottom: 50px;
+	margin-bottom: 20px;
+	width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 2px 5px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid;
+}
+
+th {
+    text-align: left;
+}
+
+canvas {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px;
+    margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 *.hidden {
 	display: none;
+}
+
+input:disabled, button:disabled {
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.bad {
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.good {
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.marginal {
+    padding: 5px 10px;
+    border-radius: 4px;
 }

@@ -5,7 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project (tries) to adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.1.2] - 2025-06-18
+
+## [1.2.0] - 2025-06-17
+
+### Updated
+
+- Refactored `colors.css` to include additional color variables for improved styling consistency and accessibility.
+- Enhanced `style.css` with new styles for `form`, `table`, `button`, and `navbar` elements, including hover effects and disabled states.
+- Simplified `index.html` structure by replacing static table data with dynamic Thymeleaf expressions for rendering seasonal rainfall and flood risk data.
+- Added a filter form and chart section to `index.html` for better user interaction and data visualization.
+- Updated `layout.html` to improve navigation bar styling and structure, including the addition of a logo and responsive design adjustments.
+
+## [1.1.2] - 2025-06-17
 
 ### Added
 
@@ -118,6 +129,7 @@ and this project (tries) to adhere to [Semantic Versioning](https://semver.org/s
 - [Git Ignore](.gitignore) and [Git Attributes](.gitattributes) for repository management.
 - [MIT license](LICENSE)
 
+[1.2.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.2.0
 [1.1.2]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.1.2
 [1.1.1]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.1.1
 [1.1.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.1.0
