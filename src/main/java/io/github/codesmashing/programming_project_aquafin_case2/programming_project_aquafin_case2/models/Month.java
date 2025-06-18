@@ -1,7 +1,5 @@
 package io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.models;
 
-import java.time.Year;
-
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
@@ -16,7 +14,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(name = "maanden")
+@Table(name = "overstromingsgevaren_maanden")
 public class Month {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,11 +26,11 @@ public class Month {
 	@Size(max = 50, message = "Name cannot exceed 50 characters")
 	private String name;
 
-	@NotNull(message = "Year ID cannot be null")
+	@NotNull(message = "Season ID cannot be null")
 	@ManyToOne
-	@JoinColumn(name = "jaar_id", referencedColumnName = "jaar")
+	@JoinColumn(name = "overstromingsgevaren_seizoenen_id", referencedColumnName = "id")
 	@JsonManagedReference
-	private Flood yearId;
+	private Season seasonId;
 
 	@NotNull(message = "Rainfall cannot be null")
 	@Column(name = "neerslag")
@@ -42,22 +40,24 @@ public class Month {
 	@Column(name = "richtwaarde")
 	private Float guideValue;
 
-	@Column(name = "is_historisch")
-	private Boolean isHistoric;
+	@Column(name = "laatst_bijgewerkt", updatable = false, insertable = false)
+	private java.sql.Timestamp lastUpdated;
 
 	public Month() {
 	}
 
-	public Month(Integer id, @NotNull(message = "Name cannot be null") String name,
-			@NotNull(message = "Year ID cannot be null") Flood yearId,
+	public Month(
+			Integer id, @NotNull(message = "Name cannot be null") String name,
+			@NotNull(message = "Season ID cannot be null") Season seasonId,
 			@NotNull(message = "Rainfall cannot be null") Float rainfall,
-			@NotNull(message = "Guide value cannot be null") Float guideValue, Boolean isHistoric) {
+			@NotNull(message = "Guide value cannot be null") Float guideValue,
+			java.sql.Timestamp lastUpdated) {
 		this.id = id;
 		this.name = name;
-		this.yearId = yearId;
+		this.seasonId = seasonId;
 		this.rainfall = rainfall;
 		this.guideValue = guideValue;
-		this.isHistoric = isHistoric;
+		this.lastUpdated = lastUpdated;
 	}
 
 	public Integer getId() {
@@ -76,12 +76,12 @@ public class Month {
 		this.name = name;
 	}
 
-	public Flood getYearId() {
-		return yearId;
+	public Season getSeasonId() {
+		return seasonId;
 	}
 
-	public void setYearId(Flood yearId) {
-		this.yearId = yearId;
+	public void setSeasonId(Season seasonId) {
+		this.seasonId = seasonId;
 	}
 
 	public Float getRainfall() {
@@ -100,11 +100,11 @@ public class Month {
 		this.guideValue = guideValue;
 	}
 
-	public Boolean getIsHistoric() {
-		return isHistoric;
+	public java.sql.Timestamp getLastUpdated() {
+		return lastUpdated;
 	}
 
-	public void setIsHistoric(Boolean isHistoric) {
-		this.isHistoric = isHistoric;
+	public void setLastUpdated(java.sql.Timestamp lastUpdated) {
+		this.lastUpdated = lastUpdated;
 	}
 }

@@ -1,25 +1,20 @@
 package io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.models;
 
-import java.time.Year;
-
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.converters.YearConverter;
-import io.micrometer.common.lang.Nullable;
 import jakarta.persistence.Column;
-import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(name = "seizoenen")
+@Table(name = "overstromingsgevaren_seizoenen")
 public class Season {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,48 +23,36 @@ public class Season {
 
 	@NotNull(message = "Year ID cannot be null")
 	@ManyToOne
-	@JoinColumn(name = "jaar_id", referencedColumnName = "jaar")
+	@JoinColumn(name = "overstromingsgevaren_id", referencedColumnName = "jaar")
 	@JsonManagedReference
-	private Flood yearId;
+	private Flood dangerId;
 
-	@Nullable
-	@OneToOne
-	@JoinColumn(name = "maand_id_1", referencedColumnName = "id")
-	@JsonManagedReference
-	private Month firstMonth;
-
-	@Nullable
-	@OneToOne
-	@JoinColumn(name = "maand_id_2", referencedColumnName = "id")
-	@JsonManagedReference
-	private Month secondMonth;
-
-	@Nullable
-	@OneToOne
-	@JoinColumn(name = "maand_id_3", referencedColumnName = "id")
-	@JsonManagedReference
-	private Month thirdMonth;
+	@NotNull(message = "Season name cannot be null")
+	@Column(name = "naam")
+	@Size(max = 50, message = "Season name cannot exceed 50 characters")
+	private String name;
 
 	@NotNull(message = "Guide value cannot be null")
 	@Column(name = "richtwaarde")
 	private Float guideValue;
 
-	@Column(name = "is_historisch")
-	private Boolean isHistoric;
+	@Column(name = "laatst_bijgewerkt", updatable = false, insertable = false)
+	private java.sql.Timestamp lastUpdated;
 
 	public Season() {
 	}
 
-	public Season(Integer id, @NotNull(message = "Year ID cannot be null") Flood yearId, Month firstMonth,
-			Month secondMonth, Month thirdMonth,
-			@NotNull(message = "Guide value cannot be null") Float guideValue, Boolean isHistoric) {
+	public Season(
+			Integer id,
+			@NotNull(message = "Year ID cannot be null") Flood dangerId,
+			@NotNull(message = "Guide value cannot be null") Float guideValue,
+			@NotNull(message = "Season name cannot be null") String name,
+			java.sql.Timestamp lastUpdated) {
 		this.id = id;
-		this.yearId = yearId;
-		this.firstMonth = firstMonth;
-		this.secondMonth = secondMonth;
-		this.thirdMonth = thirdMonth;
+		this.dangerId = dangerId;
 		this.guideValue = guideValue;
-		this.isHistoric = isHistoric;
+		this.name = name;
+		this.lastUpdated = lastUpdated;
 	}
 
 	public Integer getId() {
@@ -80,36 +63,12 @@ public class Season {
 		this.id = id;
 	}
 
-	public Flood getYearId() {
-		return yearId;
+	public Flood getDangerId() {
+		return dangerId;
 	}
 
-	public void setYearId(Flood yearId) {
-		this.yearId = yearId;
-	}
-
-	public Month getFirstMonth() {
-		return firstMonth;
-	}
-
-	public void setFirstMonth(Month firstMonth) {
-		this.firstMonth = firstMonth;
-	}
-
-	public Month getSecondMonth() {
-		return secondMonth;
-	}
-
-	public void setSecondMonth(Month secondMonth) {
-		this.secondMonth = secondMonth;
-	}
-
-	public Month getThirdMonth() {
-		return thirdMonth;
-	}
-
-	public void setThirdMonth(Month thirdMonth) {
-		this.thirdMonth = thirdMonth;
+	public void setDangerId(Flood dangerId) {
+		this.dangerId = dangerId;
 	}
 
 	public Float getGuideValue() {
@@ -120,11 +79,19 @@ public class Season {
 		this.guideValue = guideValue;
 	}
 
-	public Boolean getIsHistoric() {
-		return isHistoric;
+	public String getName() {
+		return name;
 	}
 
-	public void setIsHistoric(Boolean isHistoric) {
-		this.isHistoric = isHistoric;
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public java.sql.Timestamp getLastUpdated() {
+		return lastUpdated;
+	}
+
+	public void setLastUpdated(java.sql.Timestamp lastUpdated) {
+		this.lastUpdated = lastUpdated;
 	}
 }

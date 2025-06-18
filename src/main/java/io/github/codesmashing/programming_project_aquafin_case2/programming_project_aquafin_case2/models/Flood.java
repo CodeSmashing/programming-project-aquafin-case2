@@ -6,8 +6,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -15,10 +13,7 @@ import jakarta.validation.constraints.NotNull;
 
 import java.time.Year;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.converters.YearConverter;
-import io.micrometer.common.lang.Nullable;
 
 @Entity
 @Table(name = "overstromingsgevaren")
@@ -26,32 +21,9 @@ public class Flood {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "jaar")
+    @NotNull(message = "Year cannot be null")
     @Convert(converter = YearConverter.class)
     private Year year;
-
-    @Nullable
-    @OneToOne
-    @JoinColumn(name = "winter_id", referencedColumnName = "id")
-    @JsonManagedReference
-    private Season winter;
-
-    @Nullable
-    @OneToOne
-    @JoinColumn(name = "lente_id", referencedColumnName = "id")
-    @JsonManagedReference
-    private Season spring;
-
-    @Nullable
-    @OneToOne
-    @JoinColumn(name = "zomer_id", referencedColumnName = "id")
-    @JsonManagedReference
-    private Season summer;
-
-    @Nullable
-    @OneToOne
-    @JoinColumn(name = "herfst_id", referencedColumnName = "id")
-    @JsonManagedReference
-    private Season fall;
 
     @NotNull(message = "Guide value cannot be null")
     @Column(name = "richtwaarde")
@@ -59,17 +31,19 @@ public class Flood {
     @Min(value = 0, message = "Guide value cannot be less than 0")
     private Float guideValue;
 
+    @Column(name = "laatst_bijgewerkt", updatable = false, insertable = false)
+    private java.sql.Timestamp lastUpdated;
+
     public Flood() {
     }
 
-    public Flood(Year year, Season winter, Season spring, Season summer, Season fall,
-            @NotNull(message = "Guide value cannot be null") Float guideValue) {
+    public Flood(
+            Year year,
+            @NotNull(message = "Guide value cannot be null") Float guideValue,
+            java.sql.Timestamp lastUpdated) {
         this.year = year;
-        this.winter = winter;
-        this.spring = spring;
-        this.summer = summer;
-        this.fall = fall;
         this.guideValue = guideValue;
+        this.lastUpdated = lastUpdated;
     }
 
     public Year getYear() {
@@ -80,44 +54,20 @@ public class Flood {
         this.year = year;
     }
 
-    public Season getWinter() {
-        return winter;
-    }
-
-    public void setWinter(Season winter) {
-        this.winter = winter;
-    }
-
-    public Season getSpring() {
-        return spring;
-    }
-
-    public void setSpring(Season spring) {
-        this.spring = spring;
-    }
-
-    public Season getSummer() {
-        return summer;
-    }
-
-    public void setSummer(Season summer) {
-        this.summer = summer;
-    }
-
-    public Season getFall() {
-        return fall;
-    }
-
-    public void setFall(Season fall) {
-        this.fall = fall;
-    }
-
     public Float getGuideValue() {
         return guideValue;
     }
 
     public void setGuideValue(Float guideValue) {
         this.guideValue = guideValue;
+    }
+
+    public java.sql.Timestamp getLastUpdated() {
+        return lastUpdated;
+    }
+
+    public void setLastUpdated(java.sql.Timestamp lastUpdated) {
+        this.lastUpdated = lastUpdated;
     }
 
     // public boolean isMoreThenGuide() {

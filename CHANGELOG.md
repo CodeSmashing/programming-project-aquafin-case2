@@ -52,6 +52,22 @@ and this project (tries) to adhere to [Semantic Versioning](https://semver.org/s
 
 - Updated `WebController` to calculate and pass `rainfallTableRulerSteps` to the `data-raw` view for dynamic table ruler generation.
 
+## [1.1.2] - 2025-06-18
+
+### Added
+
+- Added `lastUpdated` column mapping to `Flood`, `Season`, and `Month` models for tracking the last modification timestamp.
+- Updated `Month` model to reference `Season` instead of `Flood` for better alignment with the database schema.
+- Updated `Season` model to reference `Flood` instead of individual months for improved structure and consistency.
+- Removed redundant `Rainfall` model and its associated mappings.
+- Updated `MonthDAO` and `SeasonDAO` to reflect changes in model relationships.
+
+### Updated
+
+- Refactored `Flood` model to remove direct references to seasons (`winter`, `spring`, `summer`, `fall`) and simplify its structure.
+- Adjusted table names in `Month` and `Season` models to match the database schema (`overstromingsgevaren_maanden` and `overstromingsgevaren_seizoenen`).
+- Improved validation annotations and column mappings in `Month` and `Season` models for better data integrity.
+
 ## [1.1.1] - 2025-06-17
 
 ### Removed
@@ -150,6 +166,7 @@ and this project (tries) to adhere to [Semantic Versioning](https://semver.org/s
 - [MIT license](LICENSE)
 
 <!-- [Unreleased]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v -->
+[1.1.2]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.1.2
 [1.1.1]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.1.1
 [1.1.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.1.0
 [1.0.2]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.0.2
