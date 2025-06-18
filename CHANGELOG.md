@@ -41,6 +41,19 @@ and this project (tries) to adhere to [Semantic Versioning](https://semver.org/s
 - Added a filter form and chart section to `index.html` for better user interaction and data visualization.
 - Updated `layout.html` to improve navigation bar styling and structure, including the addition of a logo and responsive design adjustments.
 
+## [1.2.0] - 2025-06-18
+
+### Updated
+
+- Refactored `FloodDAO` and `SeasonDAO` to use `Integer` as the identifier type instead of `Year` for better compatibility with the database schema.
+- Updated `Flood` model to replace `Year` type with `Integer` for the `year` field and removed the `YearConverter`.
+- Modified `Month` model to reference `Flood` (`floodId`) instead of `Season` (`seasonId`) for improved alignment with the database schema.
+- Updated `Season` model to clarify the relationship with `Flood` (`floodId`) and adjusted annotations for consistency.
+
+### Fixed
+
+- Corrected column mappings and validation annotations in `Flood`, `Month`, and `Season` models to ensure proper database integration.
+
 ## [1.1.2] - 2025-06-17
 
 ### Added
@@ -155,6 +168,7 @@ and this project (tries) to adhere to [Semantic Versioning](https://semver.org/s
 - [MIT license](LICENSE)
 
 <!-- [Unreleased]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v -->
+[1.2.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.2.0
 [1.1.2]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.1.2
 [1.1.1]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.1.1
 [1.1.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.1.0
