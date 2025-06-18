@@ -21,11 +21,11 @@ public class Season {
 	@Column(name = "id")
 	private Integer id;
 
-	@NotNull(message = "Year ID cannot be null")
+	@NotNull(message = "Flood ID cannot be null")
 	@ManyToOne
 	@JoinColumn(name = "overstromingsgevaren_id", referencedColumnName = "jaar")
 	@JsonManagedReference
-	private Flood dangerId;
+	private Flood floodId;
 
 	@NotNull(message = "Season name cannot be null")
 	@Column(name = "naam")
@@ -44,12 +44,12 @@ public class Season {
 
 	public Season(
 			Integer id,
-			@NotNull(message = "Year ID cannot be null") Flood dangerId,
+			@NotNull(message = "Flood ID cannot be null") Flood floodId,
 			@NotNull(message = "Guide value cannot be null") Float guideValue,
 			@NotNull(message = "Season name cannot be null") String name,
 			java.sql.Timestamp lastUpdated) {
 		this.id = id;
-		this.dangerId = dangerId;
+		this.floodId = floodId;
 		this.guideValue = guideValue;
 		this.name = name;
 		this.lastUpdated = lastUpdated;
@@ -63,12 +63,12 @@ public class Season {
 		this.id = id;
 	}
 
-	public Flood getDangerId() {
-		return dangerId;
+	public Flood getFloodId() {
+		return floodId;
 	}
 
-	public void setDangerId(Flood dangerId) {
-		this.dangerId = dangerId;
+	public void setFloodId(Flood floodId) {
+		this.floodId = floodId;
 	}
 
 	public Float getGuideValue() {

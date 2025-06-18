@@ -26,11 +26,11 @@ public class Month {
 	@Size(max = 50, message = "Name cannot exceed 50 characters")
 	private String name;
 
-	@NotNull(message = "Season ID cannot be null")
+	@NotNull(message = "Flood ID cannot be null")
 	@ManyToOne
-	@JoinColumn(name = "overstromingsgevaren_seizoenen_id", referencedColumnName = "id")
+	@JoinColumn(name = "overstromingsgevaren_id", referencedColumnName = "jaar")
 	@JsonManagedReference
-	private Season seasonId;
+	private Flood floodId;
 
 	@NotNull(message = "Rainfall cannot be null")
 	@Column(name = "neerslag")
@@ -48,13 +48,13 @@ public class Month {
 
 	public Month(
 			Integer id, @NotNull(message = "Name cannot be null") String name,
-			@NotNull(message = "Season ID cannot be null") Season seasonId,
+			@NotNull(message = "Flood ID cannot be null") Flood floodId,
 			@NotNull(message = "Rainfall cannot be null") Float rainfall,
 			@NotNull(message = "Guide value cannot be null") Float guideValue,
 			java.sql.Timestamp lastUpdated) {
 		this.id = id;
 		this.name = name;
-		this.seasonId = seasonId;
+		this.floodId = floodId;
 		this.rainfall = rainfall;
 		this.guideValue = guideValue;
 		this.lastUpdated = lastUpdated;
@@ -76,12 +76,12 @@ public class Month {
 		this.name = name;
 	}
 
-	public Season getSeasonId() {
-		return seasonId;
+	public Flood getFloodId() {
+		return floodId;
 	}
 
-	public void setSeasonId(Season seasonId) {
-		this.seasonId = seasonId;
+	public void setFloodId(Flood floodId) {
+		this.floodId = floodId;
 	}
 
 	public Float getRainfall() {

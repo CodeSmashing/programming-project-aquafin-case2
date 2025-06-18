@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project (tries) to adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2025-06-18
+
+### Updated
+
+- Refactored `FloodDAO` and `SeasonDAO` to use `Integer` as the identifier type instead of `Year` for better compatibility with the database schema.
+- Updated `Flood` model to replace `Year` type with `Integer` for the `year` field and removed the `YearConverter`.
+- Modified `Month` model to reference `Flood` (`floodId`) instead of `Season` (`seasonId`) for improved alignment with the database schema.
+- Updated `Season` model to clarify the relationship with `Flood` (`floodId`) and adjusted annotations for consistency.
+
+### Fixed
+
+- Corrected column mappings and validation annotations in `Flood`, `Month`, and `Season` models to ensure proper database integration.
+
 ## [1.1.2] - 2025-06-18
 
 ### Added
@@ -118,6 +131,7 @@ and this project (tries) to adhere to [Semantic Versioning](https://semver.org/s
 - [Git Ignore](.gitignore) and [Git Attributes](.gitattributes) for repository management.
 - [MIT license](LICENSE)
 
+[1.2.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.2.0
 [1.1.2]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.1.2
 [1.1.1]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.1.1
 [1.1.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.1.0

@@ -1,7 +1,6 @@
 package io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.models;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,10 +10,6 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 
-import java.time.Year;
-
-import io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.converters.YearConverter;
-
 @Entity
 @Table(name = "overstromingsgevaren")
 public class Flood {
@@ -22,8 +17,7 @@ public class Flood {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "jaar")
     @NotNull(message = "Year cannot be null")
-    @Convert(converter = YearConverter.class)
-    private Year year;
+    private Integer year;
 
     @NotNull(message = "Guide value cannot be null")
     @Column(name = "richtwaarde")
@@ -38,7 +32,7 @@ public class Flood {
     }
 
     public Flood(
-            Year year,
+            Integer year,
             @NotNull(message = "Guide value cannot be null") Float guideValue,
             java.sql.Timestamp lastUpdated) {
         this.year = year;
@@ -46,11 +40,11 @@ public class Flood {
         this.lastUpdated = lastUpdated;
     }
 
-    public Year getYear() {
+    public Integer getYear() {
         return year;
     }
 
-    public void setYear(Year year) {
+    public void setYear(Integer year) {
         this.year = year;
     }
 
