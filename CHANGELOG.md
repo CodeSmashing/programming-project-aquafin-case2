@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project (tries) to adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.1.0] - 2025-06-18
+
+### Removed
+
+- Removed `FloodDAO`, `MonthDAO`, and `SeasonDAO` as part of the refactor to align with the new database schema.
+
+### Added
+
+- Added `PrecipitationDataDAO`, `FloodRiskDAO`, `RegionDAO` for CRUD operations on `PrecipitationData`, `FloodRisk`, and `Region` entities.
+
+### Updated
+
+- Refactored DAO layer to align with the new models (`FloodRisk`, `PrecipitationData`, and `Region`).
+
 ## [3.0.0] - 2025-06-18
 
 ### Removed
@@ -218,6 +232,7 @@ and this project (tries) to adhere to [Semantic Versioning](https://semver.org/s
 - [Git Ignore](.gitignore) and [Git Attributes](.gitattributes) for repository management.
 - [MIT license](LICENSE)
 
+[3.1.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v3.1.0
 [3.0.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v3.0.0
 [2.0.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v2.0.0
 [1.2.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.2.0
