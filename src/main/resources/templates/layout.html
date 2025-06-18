@@ -6,15 +6,15 @@
 
 	<nav th:fragment="main_menu">
 		<ul>
-			<li>
+			<li class="grid-item-1">
 				<a th:href="@{/index}">
 					<img src alt="Logo">
 				</a>
 			</li>
-			<li>
+			<li class="grid-item-2">
 				<a th:href="@{/index}" class="current">Thuis</a>
 			</li>
-			<li>
+			<li class="grid-item-3">
 				<a th:href="@{/data-raw}">Ruwe data</a>
 			</li>
 
@@ -33,9 +33,14 @@
 
 	<footer>
 		<!-- <span th:text="${currentDate}"></span> -->
-		<a th:href="@{/index}">
-			<img src alt="Logo">
-		</a>
-		<p>&copy;
-			Aquafin. Alle rechten voorbehouden.</p>
+		<ul>
+			<li class="grid-item-1">
+				<a th:href="@{/index}">
+					<img src alt="Logo">
+				</a>
+			</li>
+			<li class="grid-item-2">
+				<p>Copyright &copy; 2025 Aquafin. - Alle rechten voorbehouden.</p>
+			</li>
+		</ul>
 	</footer>

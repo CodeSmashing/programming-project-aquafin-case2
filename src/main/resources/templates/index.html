@@ -11,7 +11,7 @@
 		<link rel="icon" href="data:image/png;base64,iVBORw0KGgo=">
 	</head>
 
-	<body>
+	<body data-page="index">
 		<div th:replace="~{layout :: header}"></div>
 
 		<main>
@@ -332,5 +332,6 @@
 		</main>
 
 		<div th:replace="~{layout :: footer}"></div>
+		<script type="text/javascript" th:src="@{/js/init.js}"></script>
 	</body>
 </html>
