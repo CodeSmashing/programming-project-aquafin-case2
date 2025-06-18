@@ -100,6 +100,9 @@ ___
 - [JPA Query's](https://docs.spring.io/spring-data/jpa/reference/jpa/query-methods.html).
 - [W3School (Java)](https://www.w3schools.com/java/).
 - [Dynamic module loading](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules#dynamic_module_loading).
+- [Get full month names](https://stackoverflow.com/questions/51843760/how-can-i-change-the-language-of-the-months-provided-by-localdate).
+- [Java docs Month LocalDate](https://docs.oracle.com/javase/8/docs/api/java/time/Month.html).
+- [Using LocalDate](https://dev.java/learn/date-time/dayofweek-month/).
 
 ___
 

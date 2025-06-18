@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project (tries) to adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased] - 2025-06-18
+
+### Added
+
+- Added `getCurrentMonth()`, `getYear()` and `getSpecificMonth()` methods in `APIController` for retrieving data based on the current date or specific year and or month.
+- Added validation for month input format using full Dutch month names in `APIController`.
+- Added `isValidMonth()` helper method in `APIController` for validating month names against Dutch locale.
+
+### Updated
+
+- Updated `MonthDAO` with a new query method `findByDangerIdAndName()` for retrieving month data based on year and name.
+- Updated `WebController` to include `@ModelAttribute` methods for providing `Flood`, `Season`, and `Month` data to Thymeleaf templates.
+- Updated `WebController` to include a `@ModelAttribute` named`getCurrentDate` for retrieving the current date formatted as `dd-MM-yyyy`.
+
+### Fixed
+
+- Corrected imports and added missing dependencies in `APIController` and `WebController`.
+
 ## [Unreleased] - 2025-06-17
 
 ### Updated
