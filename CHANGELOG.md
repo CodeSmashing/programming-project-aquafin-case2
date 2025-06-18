@@ -7,6 +7,12 @@ and this project (tries) to adhere to [Semantic Versioning](https://semver.org/s
 
 ## [Unreleased] - 2025-06-18
 
+### Fixed
+
+- Updated `MonthDAO` to find by `floodId` instead of the obsolete `dangerId`. Adjusted references in `APIController`.
+
+## [Unreleased] - 2025-06-18
+
 ### Added
 
 - Added `getCurrentMonth()`, `getYear()` and `getSpecificMonth()` methods in `APIController` for retrieving data based on the current date or specific year and or month.

@@ -44,7 +44,7 @@ public class APIController {
 					.body("Flood not found for current year: " + currentDate.getYear());
 		}
 
-		Optional<Month> monthOptional = monthDAO.findByDangerIdAndName(floodOptional.get(), currentMonth);
+		Optional<Month> monthOptional = monthDAO.findByFloodIdAndName(floodOptional.get(), currentMonth);
 		if (monthOptional.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND)
 					.body("Month not found for year " + floodOptional.get().getYear() + ": " + currentMonth);
@@ -80,7 +80,7 @@ public class APIController {
 					.body("Invalid month format. Please use full Dutch month names.");
 		}
 
-		Optional<Month> monthOptional = monthDAO.findByDangerIdAndName(floodOptional.get(), month);
+		Optional<Month> monthOptional = monthDAO.findByFloodIdAndName(floodOptional.get(), month);
 		if (monthOptional.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND)
 					.body("Month not found for year " + year + ": " + month);

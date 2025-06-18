@@ -8,5 +8,5 @@ import io.github.codesmashing.programming_project_aquafin_case2.programming_proj
 import io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.models.Month;
 
 public interface MonthDAO extends CrudRepository<Month, Integer> {
-	Optional<Month> findByDangerIdAndName(Flood dangerId, String name);
+	Optional<Month> findByFloodIdAndName(Flood floodId, String name);
 }
