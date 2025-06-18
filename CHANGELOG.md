@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project (tries) to adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.0] - 2025-06-18
+
+### Removed
+
+- Removed `Flood`, `Month`, and `Season` models as part of the refactor and to align with the new database schema.
+
+### Added
+
+- Introduced `FloodRisk` model to represent flood risks with relationships to `Region` and `PrecipitationData`.
+- Added `PrecipitationData` model to store rainfall data with attributes such as date, quantity, and source.
+- Added `Region` model to represent geographical regions with attributes like name, description, latitude, and longitude.
+
+### Updated
+
+- Refactored database schema to align with the new models (`FloodRisk`, `PrecipitationData`, and `Region`).
+
 ## [2.0.0] - 2025-06-18
 
 ### Fixed
@@ -202,6 +218,7 @@ and this project (tries) to adhere to [Semantic Versioning](https://semver.org/s
 - [Git Ignore](.gitignore) and [Git Attributes](.gitattributes) for repository management.
 - [MIT license](LICENSE)
 
+[3.0.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v3.0.0
 [2.0.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v2.0.0
 [1.2.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.2.0
 [1.1.2]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.1.2
