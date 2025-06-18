@@ -8,39 +8,39 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
-import io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.models.Flood;
-import io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.models.Month;
-import io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.models.Season;
-import io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.models.DAO.FloodDAO;
-import io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.models.DAO.MonthDAO;
-import io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.models.DAO.SeasonDAO;
+import io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.models.FloodRisk;
+import io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.models.PrecipitationData;
+import io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.models.Region;
+import io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.models.DAO.FloodRiskDAO;
+import io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.models.DAO.PrecipitationDataDAO;
+import io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.models.DAO.RegionDAO;
 
 @Controller
 public class WebController {
-	private final FloodDAO floodDAO;
-	private final SeasonDAO seasonDAO;
-	private final MonthDAO monthDAO;
+	private final FloodRiskDAO floodRiskDAO;
+	private final RegionDAO regionDAO;
+	private final PrecipitationDataDAO precipitationDataDAO;
 
 	@Autowired
-	public WebController(SeasonDAO seasonDAO, FloodDAO floodDAO, MonthDAO monthDAO) {
-		this.floodDAO = floodDAO;
-		this.seasonDAO = seasonDAO;
-		this.monthDAO = monthDAO;
+	public WebController(RegionDAO regionDAO, FloodRiskDAO floodRiskDAO, PrecipitationDataDAO precipitationDataDAO) {
+		this.floodRiskDAO = floodRiskDAO;
+		this.regionDAO = regionDAO;
+		this.precipitationDataDAO = precipitationDataDAO;
 	}
 
-	@ModelAttribute("floodList")
-	public Iterable<Flood> getFloodList() {
-		return floodDAO.findAll();
+	@ModelAttribute("floodRiskList")
+	public Iterable<FloodRisk> getFloodRiskList() {
+		return floodRiskDAO.findAll();
 	}
 
-	@ModelAttribute("seasonList")
-	public Iterable<Season> getSeasonList() {
-		return seasonDAO.findAll();
+	@ModelAttribute("regionList")
+	public Iterable<Region> getRegionList() {
+		return regionDAO.findAll();
 	}
 
-	@ModelAttribute("monthList")
-	public Iterable<Month> getMonthList() {
-		return monthDAO.findAll();
+	@ModelAttribute("precipitationDataList")
+	public Iterable<PrecipitationData> getPrecipitationDataList() {
+		return precipitationDataDAO.findAll();
 	}
 
 	@ModelAttribute("currentDate")
@@ -56,19 +56,4 @@ public class WebController {
 	public String showIndex() {
 		return "index";
 	}
-
-	// @GetMapping("/data-raw/{year}")
-	// public ResponseEntity<Season> getRainfall(@PathVariable("year") Year year) {
-	// Optional<Season> seasonOptional = seasonDAO.findById(year);
-	// if (seasonOptional.isEmpty()) {
-	// return ResponseEntity.notFound().build();
-	// }
-
-	// return ResponseEntity.ok(seasonOptional.get());
-	// }
-
-	// @GetMapping("/data-raw/all")
-	// public ResponseEntity<Iterable<Season>> getSeasonAll() {
-	// return ResponseEntity.ok(seasonDAO.findAll());
-	// }
 }

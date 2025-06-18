@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project (tries) to adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.2.0] - 2025-06-18
+
+### Removed
+
+- Removed old endpoints in `APIController` for retrieving `Month`, `Season`, and `Flood` data.
+
+### Added
+
+- Added new endpoints in `APIController` for retrieving `Region`, `Precipitation`, and `FloodRisks` data.
+- Added new endpoint in `APIController` for adding `Precipitation` data.
+- Added `RegionDAO`, method `findByRegionName` for querying regions by name.
+- Added `FloodRiskDAO` and `PrecipitationDataDAO` methods `findByRegionAndDateOccurence` for querying data by region and date.
+
+### Updated
+
+- Refactored `WebController` to replace `Flood`, `Month`, and `Season` attributes with `FloodRisk`, `PrecipitationData`, and `Region`.
+- Updated `APIController` to handle new endpoints for precipitation and flood risk data.
+- Adjusted imports for DAOs in `WebController` and `APIController`.
+
 ## [3.1.0] - 2025-06-18
 
 ### Removed
@@ -232,6 +251,7 @@ and this project (tries) to adhere to [Semantic Versioning](https://semver.org/s
 - [Git Ignore](.gitignore) and [Git Attributes](.gitattributes) for repository management.
 - [MIT license](LICENSE)
 
+[3.2.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v3.2.0
 [3.1.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v3.1.0
 [3.0.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v3.0.0
 [2.0.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v2.0.0
