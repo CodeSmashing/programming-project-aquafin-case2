@@ -2,23 +2,16 @@
 <html lang="nl"
 	xmlns:th="http://www.thymeleaf.org">
 
-	<header th:insert="~{layout :: main_menu}"></header>
+	<header>
+		<a th:href="@{/index}" class="logo">
+			<img th:src="@{/images/Logo_Aquafin.png}" alt="Logo">
+		</a>
+		<p>🌧️ Seizoensneerslag en Overstromingsgevaar</p>
+	</header>
 
 	<nav th:fragment="main_menu">
-		<ul>
-			<li class="grid-item-1">
-				<a th:href="@{/index}">
-					<img th:src="@{/images/Logo_Aquafin.png}" alt="Logo" class="nav-logo" />
-				</a>
-			</li>
-			<li class="grid-item-2">
-				<a th:href="@{/index}" class="current">Thuis</a>
-			</li>
-			<li class="grid-item-3">
-				<a th:href="@{/data-raw}">Ruwe data</a>
-			</li>
-
-			<!-- <li>
+		<!--
+			<li>
 				<a
 					th:text="#{switch-en}"
 					th:href="@{${requestURI}(lang='en')}"></a>
@@ -27,20 +20,15 @@
 				<a
 					th:text="#{switch-fr}"
 					th:href="@{${requestURI}(lang='fr')}"></a>
-			</li> -->
-		</ul>
+			</li>
+		-->
 	</nav>
 
 	<footer>
-		<!-- <span th:text="${currentDate}"></span> -->
-		<ul>
-			<li class="grid-item-1">
-				<a th:href="@{/index}">
-					<img src alt="Logo">
-				</a>
-			</li>
-			<li class="grid-item-2">
-				<p>Copyright &copy; 2025 Aquafin. - Alle rechten voorbehouden.</p>
-			</li>
-		</ul>
+		<a th:href="@{/index}" class="logo">
+			<img th:src="@{/images/Logo_Aquafin.png}" alt="Logo">
+		</a>
+		<p>Copyright &copy;
+			<span th:text="${currentDate}"></span>
+			Aquafin. - Alle rechten voorbehouden.</p>
 	</footer>

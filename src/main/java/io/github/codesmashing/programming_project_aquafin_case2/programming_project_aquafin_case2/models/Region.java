@@ -30,7 +30,8 @@ public class Region {
 	public Region() {
 	}
 
-	public Region(@Size(max = 50, message = "Region name cannot exceed 50 characters") String regionName,
+	public Region(
+			@Size(max = 50, message = "Region name cannot exceed 50 characters") String regionName,
 			@Size(max = 255, message = "Description cannot exceed 255 characters") String regionDescription,
 			Double latitude, Double longitude) {
 		this.regionName = regionName;

@@ -5,6 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project (tries) to adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased] - 2025-06-19
+
+### Removed
+
+- Deleted `data-raw.html` template as part of the refactor to simplify the project structure.
+
+### Updated
+
+- Refactored `style.css` to improve layout styling for `header`, `footer`, and `form` elements:
+  - Added new CSS variable for padding.
+  - Simplified grid-based layout for `header` and `footer`.
+  - Removed excessive `nav` styling.
+  - Fixed `main` styling to be more sensible.
+  - Moved `logo` class to the base of the file.
+  - Commented out various styling for later refactoring.
+- Updated `index.html`:
+  - Added input fields for selecting year, month, and day in the filter form (non-functional a.t.m.).
+  - Simplified table structure for displaying flood risks.
+- Updated `layout.html`:
+  - Replaced navigation menu with a simplified header and similar footer structure.
+  - Added dynamic copyright year using Thymeleaf.
+
 ## [Unreleased] - 2025-06-18
 
 ### Updated

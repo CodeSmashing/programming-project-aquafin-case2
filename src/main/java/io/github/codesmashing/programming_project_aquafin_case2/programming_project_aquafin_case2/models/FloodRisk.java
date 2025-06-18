@@ -39,7 +39,11 @@ public class FloodRisk {
     public FloodRisk() {
     }
 
-    public FloodRisk(Region region, PrecipitationData precipitationData, LocalDate dateOccurence, Integer riskLevel) {
+    public FloodRisk(
+            Region region,
+            PrecipitationData precipitationData,
+            LocalDate dateOccurence,
+            Integer riskLevel) {
         this.region = region;
         this.precipitationData = precipitationData;
         this.dateOccurence = dateOccurence;

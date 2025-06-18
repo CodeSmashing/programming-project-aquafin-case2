@@ -1,66 +1,63 @@
 <!DOCTYPE html>
 <html lang="nl" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <title>Case 2 demo</title>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>Case 2 demo</title>
 
-        <link rel="stylesheet" th:href="@{/css/style.css}" />
-        <link rel="icon" th:href="@{/images/Logo_Aquafin.png}" />
-    </head>
+		<link rel="stylesheet" th:href="@{/css/style.css}" />
+		<link rel="icon" th:href="@{/images/Logo_Aquafin.png}" />
+	</head>
 
-    <body data-page="index">
-        <div th:replace="~{layout :: header}"></div>
+	<body data-page="home">
+		<div th:replace="~{layout :: header}"></div>
 
-        <main class="container">
-            <h3>🌧️ Seizoensneerslag en Overstromingsgevaar</h3>
+		<main class="container">
 
-            <form action="/" method="get" class="filter-form">
-                <input
-                    type="number"
-                    name="jaar"
-                    th:value="${selectedYear}"
-                    placeholder="Vul jaar in" />
-                <button>Toepassen</button>
-            </form>
+			<form action="/" method="get" name="filter-form">
+				<input
+					type="number"
+					name="year"
+					th:value="${selectedYear}"
+					placeholder="Vul jaar in" />
+				<input
+					type="number"
+					name="month"
+					th:value="${selectedMonth}"
+					placeholder="Vul maand in" />
+				<input
+					type="number"
+					name="day"
+					th:value="${selectedDay}"
+					placeholder="Vul dag in" />
+				<button>Toepassen</button>
+			</form>
 
-            <section class="chart-section">
-                <h4>
-                    Diagram incidenten voor
-                    <span th:text="${selectedYear}">2020</span>
-                </h4>
-                <canvas id="myChart" width="400" height="200"></canvas>
-            </section>
+			<table>
+				<caption><h4>Tabel overstromingen</h4></caption>
+				<thead>
+					<tr>
+						<th>Jaar</th>
+						<th>Seizoen</th>
+						<th>Richtwaarde</th>
+						<th>Gevaar (Ja/Nee)</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="item : ${overstromingen}">
+						<td th:text="${item.jaar}">Jaar</td>
+						<td th:text="${item.seizoen}">Seizoen</td>
+						<td th:text="${item.richtwaarde}">Richtwaarde</td>
+						<td
+							th:text="${item.gevaar}"
+							th:classappend="${item.gevaar == 'Ja' ? 'bad' : 'good'}">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</main>
 
-            <section>
-                <h4>Tabel overstromingen</h4>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Jaar</th>
-                            <th>Seizoen</th>
-                            <th>Richtwaarde</th>
-                            <th>Gevaar (Ja/Nee)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="item : ${overstromingen}">
-                            <td th:text="${item.jaar}">Jaar</td>
-                            <td th:text="${item.seizoen}">Seizoen</td>
-                            <td th:text="${item.richtwaarde}">Richtwaarde</td>
-                            <td
-                                th:text="${item.gevaar}"
-                                th:classappend="${item.gevaar == 'Ja' ? 'bad' : 'good'}">
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <button>Toon Meer</button>
-            </section>
-        </main>
-
-        <div th:replace="~{layout :: footer}"></div>
-        <script type="text/javascript" th:src="@{/js/init.js}"></script>
-    </body>
+		<div th:replace="~{layout :: footer}"></div>
+		<script type="text/javascript" th:src="@{/js/init.js}"></script>
+	</body>
 </html>

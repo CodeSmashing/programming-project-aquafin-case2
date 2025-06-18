@@ -11,6 +11,7 @@
 	--padding-block-main: 10vh;
 	--padding: 20px;
 	--padding-small: 10px;
+	--padding-large: 40px;
 
 	--gap: 10px;
 }
@@ -29,120 +30,71 @@ body {
 }
 
 header {
-	padding: 20px;
-	text-align: center;
-	height: var(--height-max-header);
-}
-
-nav {
+	position: relative;
 	display: grid;
-	place-items: center;
-	height: 100%;
-	padding-inline: calc(var(--padding) * 2);
+	grid-template-columns: auto 1fr;
+	grid-template-areas:
+		"Logo Title";
 
-	>ul {
-		display: grid;
-		grid-auto-flow: column;
-		grid-template-columns: 0.2fr 1fr 0.1fr 0.1fr;
-		grid-template-areas:
-			"Logo Spacer Index Raw-data";
+	min-height: var(--height-max-header);
+	padding-inline: var(--padding-large);
+	padding-block: var(--padding);
+	text-align: center;
 
-		list-style: none;
-		margin: 0;
-		padding: 0;
-		gap: var(--gap);
-		width: 100%;
+	.logo {
+		grid-area: Logo;
+	}
 
-		>li {
-			display: flex;
-			padding: 0;
-			margin-inline: 0.5rem;
-			margin-block: 0.75rem;
-			justify-content: center;
-
-			>a {
-				display: inline-block;
-				padding-block: var(--padding-small);
-				padding-inline: var(--padding-small);
-			}
-
-			&.grid-item-1 {
-				grid-area: Logo;
-			}
-
-			&.grid-item-2 {
-				grid-area: Index;
-			}
-
-			&.grid-item-3 {
-				grid-area: Raw-data;
-			}
-		}
+	>*:where(:not(.logo)) {
+		grid-area: Logo / Logo / Title / Title;
+		align-content: center;
 	}
 }
 
 main {
 	flex: 1;
 	min-height: var(--height-min-main);
-	width: 80%;
-
 	padding-block: var(--padding-block-main);
-	align-self: center;
-	align-content: center;
-	overflow-y: scroll;
-	width: 100%;
-	padding: 20px;
+	padding-inline: var(--padding-large);
+	justify-content: center;
+}
+
+form {
+	margin-bottom: 20px;
+	padding: 10px;
 	border-radius: 8px;
-	box-sizing: border-box;
 	box-shadow: 0 2px 5px;
 }
 
+form[name="filter-form"] {
+	display: flex;
+	justify-content: center;
+}
+
 footer {
+	position: relative;
 	display: grid;
-	place-items: center;
-	height: var(--height-max-footer);
-	padding-inline: calc(var(--padding) * 2);
+	grid-template-columns: auto 1fr;
+	grid-template-areas:
+		"Logo Copyright";
+
+	min-height: var(--height-max-footer);
+	padding-inline: var(--padding-large);
+	padding-block: var(--padding);
 	margin-top: auto;
-	padding: 20px;
 	text-align: center;
 
-	>ul {
-		display: grid;
-		grid-auto-flow: column;
-		grid-template-columns: 0.2fr auto 1fr;
-		grid-template-areas:
-			"Logo Copyright Spacer";
+	.logo {
+		grid-area: Logo;
+	}
 
-		list-style: none;
-		margin: 0;
-		padding: 0;
-		gap: var(--gap);
-		width: 100%;
-
-		>li {
-			display: flex;
-			padding: 0;
-			margin-inline: 0.5rem;
-			margin-block: 0.75rem;
-			justify-content: center;
-
-			>a {
-				display: inline-block;
-				padding-block: var(--padding-small);
-				padding-inline: var(--padding-small);
-			}
-
-			&.grid-item-1 {
-				grid-area: Logo;
-			}
-
-			&.grid-item-2 {
-				grid-area: Copyright;
-			}
-		}
+	>*:where(:not(.logo)) {
+		grid-area: Logo / Logo / Copyright / Copyright;
+		align-content: center;
 	}
 }
 
+/*
 table#rainfallTableBarChart {
 	display: grid;
 	grid-template-columns: 100px auto;
@@ -288,12 +240,49 @@ h4 {
 	margin-bottom: 20px;
 }
 
-form {
+table {
+	padding: 20px;
 	margin-bottom: 20px;
-	padding: 10px;
+	width: 100%;
+	border-collapse: collapse;
+	box-shadow: 0 2px 5px;
+	border-radius: 8px;
+	overflow: hidden;
+
+	th,
+	td {
+		padding: 12px;
+		border-bottom: 1px solid;
+	}
+
+	th {
+		text-align: left;
+	}
+}
+
+canvas {
+	padding: 20px;
 	border-radius: 8px;
 	box-shadow: 0 2px 5px;
+	margin-bottom: 20px;
+	width: 100%;
+	box-sizing: border-box;
 }
+
+.bad {
+	padding: 5px 10px;
+	border-radius: 4px;
+}
+
+.good {
+	padding: 5px 10px;
+	border-radius: 4px;
+}
+
+.marginal {
+	padding: 5px 10px;
+	border-radius: 4px;
+}*/
 
 input,
 [type="text"],
@@ -331,55 +320,20 @@ option {
 	}
 }
 
-table {
-	padding: 20px;
-	margin-bottom: 20px;
-	width: 100%;
-	border-collapse: collapse;
-	box-shadow: 0 2px 5px;
-	border-radius: 8px;
-	overflow: hidden;
+.logo {
+	width: 72px;
 
-	th,
-	td {
-		padding: 12px;
-		border-bottom: 1px solid;
+	img {
+		width: -moz-available;
+		height: fit-content;
 	}
-
-	th {
-		text-align: left;
-	}
-}
-
-canvas {
-	padding: 20px;
-	border-radius: 8px;
-	box-shadow: 0 2px 5px;
-	margin-bottom: 20px;
-	width: 100%;
-	box-sizing: border-box;
-}
-
-*.hidden {
-	display: none;
-}
-
-.bad {
-	padding: 5px 10px;
-	border-radius: 4px;
-}
-
-.good {
-	padding: 5px 10px;
-	border-radius: 4px;
-}
-
-.marginal {
-	padding: 5px 10px;
-	border-radius: 4px;
 }
 
 img {
 	width: 25px;
 	height: 25px;
+}
+
+*.hidden {
+	display: none;
 }
