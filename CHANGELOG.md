@@ -5,13 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project (tries) to adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] - 2025-06-18
+## [2.0.0] - 2025-06-18
 
 ### Fixed
 
 - Updated `MonthDAO` to find by `floodId` instead of the obsolete `dangerId`. Adjusted references in `APIController`.
 
-## [Unreleased] - 2025-06-18
+## [2.0.0] - 2025-06-18
 
 ### Added
 
@@ -29,13 +29,13 @@ and this project (tries) to adhere to [Semantic Versioning](https://semver.org/s
 
 - Corrected imports and added missing dependencies in `APIController` and `WebController`.
 
-## [Unreleased] - 2025-06-17
+## [2.0.0] - 2025-06-17
 
 ### Updated
 
 - Replaced tag references for commits related to the branch `initial-rainfall-data-handling` with a `Unreleased` tag.
 
-## [Unreleased] - 2025-06-14
+## [2.0.0] - 2025-06-14
 
 ### Added
 
@@ -52,7 +52,7 @@ and this project (tries) to adhere to [Semantic Versioning](https://semver.org/s
 - Added an ID `rainfallTableBarChart` to the rainfall data table in `data-raw.html`.
 - Improved header, navigation, and footer styling in `style.css` for consistent layout across pages.
 
-## [Unreleased] - 2025-06-14
+## [2.0.0] - 2025-06-14
 
 ### Added
 
@@ -64,7 +64,7 @@ and this project (tries) to adhere to [Semantic Versioning](https://semver.org/s
 - Updated `index.html` and `data-raw.html` to include `data-page` attributes for dynamic JavaScript initialization.
 - Updated `README.md` with a reference to dynamic module loading documentation.
 
-## [Unreleased] - 2025-06-14
+## [2.0.0] - 2025-06-14
 
 ### Added
 
@@ -202,9 +202,9 @@ and this project (tries) to adhere to [Semantic Versioning](https://semver.org/s
 - [Git Ignore](.gitignore) and [Git Attributes](.gitattributes) for repository management.
 - [MIT license](LICENSE)
 
-<!-- [Unreleased]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v -->
-[1.1.2]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.1.2
+[2.0.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v2.0.0
 [1.2.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.2.0
+[1.1.2]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.1.2
 [1.1.1]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.1.1
 [1.1.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.1.0
 [1.0.2]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.0.2
