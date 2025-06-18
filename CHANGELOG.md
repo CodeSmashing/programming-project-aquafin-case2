@@ -41,6 +41,126 @@ and this project (tries) to adhere to [Semantic Versioning](https://semver.org/s
 - Added a filter form and chart section to `index.html` for better user interaction and data visualization.
 - Updated `layout.html` to improve navigation bar styling and structure, including the addition of a logo and responsive design adjustments.
 
+## [3.2.0] - 2025-06-18
+
+### Removed
+
+- Removed old endpoints in `APIController` for retrieving `Month`, `Season`, and `Flood` data.
+
+### Added
+
+- Added new endpoints in `APIController` for retrieving `Region`, `Precipitation`, and `FloodRisks` data.
+- Added new endpoint in `APIController` for adding `Precipitation` data.
+- Added `RegionDAO`, method `findByRegionName` for querying regions by name.
+- Added `FloodRiskDAO` and `PrecipitationDataDAO` methods `findByRegionAndDateOccurence` for querying data by region and date.
+
+### Updated
+
+- Refactored `WebController` to replace `Flood`, `Month`, and `Season` attributes with `FloodRisk`, `PrecipitationData`, and `Region`.
+- Updated `APIController` to handle new endpoints for precipitation and flood risk data.
+- Adjusted imports for DAOs in `WebController` and `APIController`.
+
+## [3.1.0] - 2025-06-18
+
+### Removed
+
+- Removed `FloodDAO`, `MonthDAO`, and `SeasonDAO` as part of the refactor to align with the new database schema.
+
+### Added
+
+- Added `PrecipitationDataDAO`, `FloodRiskDAO`, `RegionDAO` for CRUD operations on `PrecipitationData`, `FloodRisk`, and `Region` entities.
+
+### Updated
+
+- Refactored DAO layer to align with the new models (`FloodRisk`, `PrecipitationData`, and `Region`).
+
+## [3.0.0] - 2025-06-18
+
+### Removed
+
+- Removed `Flood`, `Month`, and `Season` models as part of the refactor and to align with the new database schema.
+
+### Added
+
+- Introduced `FloodRisk` model to represent flood risks with relationships to `Region` and `PrecipitationData`.
+- Added `PrecipitationData` model to store rainfall data with attributes such as date, quantity, and source.
+- Added `Region` model to represent geographical regions with attributes like name, description, latitude, and longitude.
+
+### Updated
+
+- Refactored database schema to align with the new models (`FloodRisk`, `PrecipitationData`, and `Region`).
+
+## [2.0.0] - 2025-06-18
+
+### Fixed
+
+- Updated `MonthDAO` to find by `floodId` instead of the obsolete `dangerId`. Adjusted references in `APIController`.
+
+## [2.0.0] - 2025-06-18
+
+### Added
+
+- Added `getCurrentMonth()`, `getYear()` and `getSpecificMonth()` methods in `APIController` for retrieving data based on the current date or specific year and or month.
+- Added validation for month input format using full Dutch month names in `APIController`.
+- Added `isValidMonth()` helper method in `APIController` for validating month names against Dutch locale.
+
+### Updated
+
+- Updated `MonthDAO` with a new query method `findByDangerIdAndName()` for retrieving month data based on year and name.
+- Updated `WebController` to include `@ModelAttribute` methods for providing `Flood`, `Season`, and `Month` data to Thymeleaf templates.
+- Updated `WebController` to include a `@ModelAttribute` named`getCurrentDate` for retrieving the current date formatted as `dd-MM-yyyy`.
+
+### Fixed
+
+- Corrected imports and added missing dependencies in `APIController` and `WebController`.
+
+## [2.0.0] - 2025-06-17
+
+### Updated
+
+- Replaced tag references for commits related to the branch `initial-rainfall-data-handling` with a `Unreleased` tag.
+
+## [2.0.0] - 2025-06-14
+
+### Added
+
+- Added missing `main` element to `data-raw.html`.
+- Added a grid layout for rainfall data visualization in `data-raw.html` using the `<table>` element for semantic clarity.
+- Introduced data attributes for dynamic bar chart rendering for monthly rainfall data using `data-bar-value` attributes.
+- Enhanced navigation and footer sections in `layout.html` with a grid-based structure to better match Figma prototype styling.
+- Added new CSS variables for layout dimensions, padding, and gaps in `style.css`.
+- Updated `colors.css` with background and text colors for grid items, including temporary background for bar chart elements.
+- Center-aligned `h1` elements in `font.css`.
+
+### Updated
+
+- Added an ID `rainfallTableBarChart` to the rainfall data table in `data-raw.html`.
+- Improved header, navigation, and footer styling in `style.css` for consistent layout across pages.
+
+## [2.0.0] - 2025-06-14
+
+### Added
+
+- Added dynamic module loading for JavaScript files in `init.js` to handle page-specific logic.
+- Created `data-chart-renderer.js` for initializing rainfall data visualizations.
+
+### Updated
+
+- Updated `index.html` and `data-raw.html` to include `data-page` attributes for dynamic JavaScript initialization.
+- Updated `README.md` with a reference to dynamic module loading documentation.
+
+## [2.0.0] - 2025-06-14
+
+### Added
+
+- Added `findLargest()` and `findYoungest()` methods to `RainfallDAO` for retrieving the largest rainfall value and the most recent rainfall data, respectively.
+- Added `getLargestRainfall()` method to the `Rainfall` model for calculating the largest rainfall value programmatically.
+- Added `@ModelAttribute` methods in `WebController` to provide rainfall data (`rainfallList` and `rainfallYoungest`) to Thymeleaf templates.
+
+### Updated
+
+- Updated `WebController` to calculate and pass `rainfallTableRulerSteps` to the `data-raw` view for dynamic table ruler generation.
+
 ## [1.2.0] - 2025-06-18
 
 ### Updated
@@ -168,6 +288,10 @@ and this project (tries) to adhere to [Semantic Versioning](https://semver.org/s
 - [MIT license](LICENSE)
 
 <!-- [Unreleased]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v -->
+[3.2.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v3.2.0
+[3.1.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v3.1.0
+[3.0.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v3.0.0
+[2.0.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v2.0.0
 [1.2.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.2.0
 [1.1.2]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.1.2
 [1.1.1]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v1.1.1

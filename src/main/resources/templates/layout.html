@@ -6,29 +6,41 @@
 
 	<nav th:fragment="main_menu">
 		<ul>
-			<li>
+			<li class="grid-item-1">
 				<a th:href="@{/index}">
 					<img th:src="@{/images/Logo_Aquafin.png}" alt="Logo" class="nav-logo" />
 				</a>
 			</li>
-			<li>
+			<li class="grid-item-2">
 				<a th:href="@{/index}" class="current">Thuis</a>
 			</li>
+			<li class="grid-item-3">
+				<a th:href="@{/data-raw}">Ruwe data</a>
+			</li>
 
-			<!--
-				<li class="nav-item">
-					<a th:text="#{switch-en}" th:href="@{${requestURI}(lang='en')}" class="nav-link"></a>
-				</li>
-				<li class="nav-item">
-					<a th:text="#{switch-fr}" th:href="@{${requestURI}(lang='fr')}" class="nav-link"></a>
-				</li>
-				-->
+			<!-- <li>
+				<a
+					th:text="#{switch-en}"
+					th:href="@{${requestURI}(lang='en')}"></a>
+			</li>
+			<li>
+				<a
+					th:text="#{switch-fr}"
+					th:href="@{${requestURI}(lang='fr')}"></a>
+			</li> -->
 		</ul>
 	</nav>
 
 	<footer>
 		<!-- <span th:text="${currentDate}"></span> -->
-
-		<p>&copy;
-			Aquafin. Alle rechten voorbehouden.</p>
+		<ul>
+			<li class="grid-item-1">
+				<a th:href="@{/index}">
+					<img src alt="Logo">
+				</a>
+			</li>
+			<li class="grid-item-2">
+				<p>Copyright &copy; 2025 Aquafin. - Alle rechten voorbehouden.</p>
+			</li>
+		</ul>
 	</footer>

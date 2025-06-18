@@ -11,45 +11,91 @@
 		<link rel="icon" th:href="@{/images/Logo_Aquafin.png}" />
 	</head>
 
-	<body>
+	<body data-page="data-raw">
 		<div th:replace="~{layout :: header}"></div>
-		<h1>Jaarlijkse Neerslaggegevens</h1>
-		<table>
-			<thead>
-				<tr>
-					<th>Jaar</th>
-					<th>Jan</th>
-					<th>Feb</th>
-					<th>Mrt</th>
-					<th>Apr</th>
-					<th>Mei</th>
-					<th>Jun</th>
-					<th>Jul</th>
-					<th>Aug</th>
-					<th>Sep</th>
-					<th>Okt</th>
-					<th>Nov</th>
-					<th>Dec</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="rainfall : ${rainfallList}">
-					<td th:text="${rainfall.year}"></td>
-					<td th:text="${rainfall.january}"></td>
-					<td th:text="${rainfall.february}"></td>
-					<td th:text="${rainfall.march}"></td>
-					<td th:text="${rainfall.april}"></td>
-					<td th:text="${rainfall.may}"></td>
-					<td th:text="${rainfall.june}"></td>
-					<td th:text="${rainfall.july}"></td>
-					<td th:text="${rainfall.august}"></td>
-					<td th:text="${rainfall.september}"></td>
-					<td th:text="${rainfall.october}"></td>
-					<td th:text="${rainfall.november}"></td>
-					<td th:text="${rainfall.december}"></td>
-				</tr>
-			</tbody>
-		</table>
+
+		<main>
+			<h1>Jaarlijkse Neerslaggegevens</h1>
+
+			<table id="rainfallTableBarChart">
+				<thead>
+					<tr>
+						<th th:each="i : ${#numbers.sequence(rainfallTableRulerSteps, 0, -1)}">
+							<span
+								th:text="${i == 0 ? i + 'mm' : i + '0mm'}"
+								class="rule">
+								Index
+							</span>
+						</th>
+					</tr>
+					<tr>
+						<th>
+							<span>Jaar</span>
+						</th>
+					</tr>
+				</thead>
+
+				<tbody th:if="${rainfallYoungest}">
+					<tr>
+						<td th:attr="data-bar-value=${rainfallYoungest.january}"></td>
+						<td th:attr="data-bar-value=${rainfallYoungest.february}"></td>
+						<td th:attr="data-bar-value=${rainfallYoungest.march}"></td>
+						<td th:attr="data-bar-value=${rainfallYoungest.april}"></td>
+						<td th:attr="data-bar-value=${rainfallYoungest.may}"></td>
+						<td th:attr="data-bar-value=${rainfallYoungest.june}"></td>
+						<td th:attr="data-bar-value=${rainfallYoungest.july}"></td>
+						<td th:attr="data-bar-value=${rainfallYoungest.august}"></td>
+						<td th:attr="data-bar-value=${rainfallYoungest.september}"></td>
+						<td th:attr="data-bar-value=${rainfallYoungest.october}"></td>
+						<td th:attr="data-bar-value=${rainfallYoungest.november}"></td>
+						<td th:attr="data-bar-value=${rainfallYoungest.december}"></td>
+					</tr>
+				</tbody>
+
+				<tfoot>
+					<tr>
+						<th>
+							<span>Jan</span>
+						</th>
+						<th>
+							<span>Feb</span>
+						</th>
+						<th>
+							<span>Mrt</span>
+						</th>
+						<th>
+							<span>Apr</span>
+						</th>
+						<th>
+							<span>Mei</span>
+						</th>
+						<th>
+							<span>Jun</span>
+						</th>
+						<th>
+							<span>Jul</span>
+						</th>
+						<th>
+							<span>Aug</span>
+						</th>
+						<th>
+							<span>Sep</span>
+						</th>
+						<th>
+							<span>Okt</span>
+						</th>
+						<th>
+							<span>Nov</span>
+						</th>
+						<th>
+							<span>Dec</span>
+						</th>
+					</tr>
+				</tfoot>
+			</table>
+		</main>
+
 		<div th:replace="~{layout :: footer}"></div>
+		<script type="text/javascript" th:src="@{/js/init.js}"></script>
 	</body>
 </html>

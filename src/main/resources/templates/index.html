@@ -8,7 +8,8 @@
         <link rel="stylesheet" th:href="@{/css/style.css}" />
         <link rel="icon" th:href="@{/images/Logo_Aquafin.png}" />
     </head>
-    <body>
+
+    <body data-page="index">
         <div th:replace="~{layout :: header}"></div>
 
         <main class="container">
@@ -60,29 +61,6 @@
         </main>
 
         <div th:replace="~{layout :: footer}"></div>
-
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script>
-          const ctx = document.getElementById('myChart');
-
-          new Chart(ctx, {
-            type: 'bar',
-            data: {
-              labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-              datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
-                borderWidth: 1
-              }]
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true
-                }
-              }
-            }
-          });
-        </script>
+        <script type="text/javascript" th:src="@{/js/init.js}"></script>
     </body>
 </html>
