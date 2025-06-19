@@ -29,6 +29,6 @@
 			<img th:src="@{/images/Logo_Aquafin.png}" alt="Logo">
 		</a>
 		<p>Copyright &copy;
-			<span th:text="${currentDate}"></span>
+			<span th:text="${#dates.format(currentDate, 'dd/MM/yyyy')}"></span>
 			Aquafin. - Alle rechten voorbehouden.</p>
 	</footer>

@@ -7,6 +7,17 @@ and this project (tries) to adhere to [Semantic Versioning](https://semver.org/s
 
 ## [Unreleased] - 2025-06-19
 
+### Updated
+
+- Refactored `WebController`:
+  - Changed `currentDate` model attribute to return `java.util.Date` for compatibility with Thymeleaf's `#dates.format()` utility.
+  - Added `currentDateFormatted` model attribute to provide a preformatted date string (`dd-MM-yyyy`) for other use.
+  - Updated `getFloodRisk` method to use `currentDateFormatted` when no date is provided in the request.
+- Updated `layout.html`:
+  - Modified date rendering to use Thymeleaf's `#dates.format()` utility for dynamic formatting of `currentDate`.
+
+## [Unreleased] - 2025-06-19
+
 ### Removed
 
 - Deleted `data-raw.html` template as part of the refactor to simplify the project structure.

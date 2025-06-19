@@ -51,7 +51,13 @@ public class WebController {
 	}
 
 	@ModelAttribute("currentDate")
-	public String getCurrentDate() {
+	public java.util.Date getCurrentDate() {
+		LocalDate currentDate = LocalDate.now();
+		return java.sql.Date.valueOf(currentDate);
+	}
+
+	@ModelAttribute("currentDateFormatted")
+	public String getCurrentDateFormatted() {
 		LocalDate currentDate = LocalDate.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		String formattedDate = currentDate.format(formatter);
@@ -76,7 +82,7 @@ public class WebController {
 			@RequestParam(name = "date", required = false) @DateTimeFormat(pattern = "dd/MM/yyyy") String dateString,
 			Model model) {
 		if (dateString == null) {
-			dateString = (String) model.getAttribute("currentDate");
+			dateString = getCurrentDateFormatted();
 		}
 
 		// Roept API aan voor data
