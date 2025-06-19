@@ -7,6 +7,28 @@ and this project (tries) to adhere to [Semantic Versioning](https://semver.org/s
 
 ## [Unreleased] - 2025-06-19
 
+### Added
+
+- Added `flood-risk-table-handler.js` for dynamically filtering date options based on selected region in the flood risk table.
+- Added form submission functionality in `index.html` for manually adding flood risk data (currently untested and likely non-functional).
+
+### Updated
+
+- Refactored JavaScript module loading logic in `init.js` to handle only the `index` page, removing support for `home` and `data-raw` pages.
+- Refactored `style.css`:
+  - Simplified table styling by removing unused grid-based layout.
+  - Improved table appearance with consistent padding and alignment.
+- Enhanced `index.html`:
+  - Added dropdowns for filtering flood risks by region and date.
+  - Updated table structure to display flood risk data with additional columns (region name, precipitation, date, risk level, and data type).
+  - Added buttons for filtering historical and forecast data, graphical view, and manual data addition (currently non-functional).
+
+### Removed
+
+- Removed unused CSS classes and grid-based table layout from `style.css`.
+
+## [Unreleased] - 2025-06-19
+
 ### Updated
 
 - Refactored `WebController`:

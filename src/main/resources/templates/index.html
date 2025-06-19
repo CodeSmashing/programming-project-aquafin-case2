@@ -9,52 +9,103 @@
 		<link rel="icon" th:href="@{/images/Logo_Aquafin.png}" />
 	</head>
 
-	<body data-page="home">
+	<body data-page="index">
 		<div th:replace="~{layout :: header}"></div>
 
-		<main class="container">
-
-			<form action="/" method="get" name="filter-form">
-				<input
-					type="number"
-					name="year"
-					th:value="${selectedYear}"
-					placeholder="Vul jaar in" />
-				<input
-					type="number"
-					name="month"
-					th:value="${selectedMonth}"
-					placeholder="Vul maand in" />
-				<input
-					type="number"
-					name="day"
-					th:value="${selectedDay}"
-					placeholder="Vul dag in" />
-				<button>Toepassen</button>
-			</form>
+		<main>
+			<h1 th:if="${risk} != 'null'" th:text="YES"></h1>
 
 			<table>
 				<caption><h4>Tabel overstromingen</h4></caption>
 				<thead>
+					<tr name="filter-row">
+						<th colspan="5">
+							<form action="/" method="get" name="filter-form">
+								<select
+									name="region"
+									id="region-select">
+									<option
+										th:each="region : ${regionList}"
+										th:text="${region.regionName}"
+										th:value="${region.regionName.toLowerCase()}"></option>
+								</select>
+								<select name="date" id="date-select">
+									<option selected disabled>No data available</option>
+									<option
+										class="hidden"
+										th:each="precipitationData : ${precipitationDataList}"
+										th:attr="data-region-name=${precipitationData.region.regionName}"
+										th:text="${precipitationData.dateOccurence}"
+										th:value="${precipitationData.dateOccurence}">
+									</option>
+								</select>
+								<button
+									type="button"
+									name="historic">
+									Enkel historisch
+								</button>
+								<button
+									type="button"
+									name="forecast">
+									Enkel voorspelling
+								</button>
+								<button
+									type="button"
+									name="graphical-view">
+									Grafische weergave
+								</button>
+								<button
+									type="button"
+									name="add-new">
+									Voeg manueel toe
+								</button>
+							</form>
+						</th>
+					</tr>
+
 					<tr>
-						<th>Jaar</th>
-						<th>Seizoen</th>
-						<th>Richtwaarde</th>
-						<th>Gevaar (Ja/Nee)</th>
+						<th>Regio naam</th>
+						<th>Neerslag (*in mm)</th>
+						<th>Datum</th>
+						<th>Risico niveau</th>
+						<th>Type data (Historisch, voorspelling)</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="item : ${overstromingen}">
-						<td th:text="${item.jaar}">Jaar</td>
-						<td th:text="${item.seizoen}">Seizoen</td>
-						<td th:text="${item.richtwaarde}">Richtwaarde</td>
-						<td
-							th:text="${item.gevaar}"
-							th:classappend="${item.gevaar == 'Ja' ? 'bad' : 'good'}">
-						</td>
+					<tr th:each="floodRisk : ${floodRiskList}">
+						<td th:text="${floodRisk.region.regionName}"></td>
+						<td th:text="${floodRisk.precipitationData.quantityInMm}"></td>
+						<td th:text="${floodRisk.dateOccurence}"></td>
+						<td th:text="${floodRisk.riskLevel}"></td>
+						<td th:text="${floodRisk.precipitationData.dataType}"></td>
 					</tr>
 				</tbody>
 			</table>
+
+			<form action="#" th:action="@{/saveFloodRisk}" th:object="${floodRisk}"
+				method="post">
+				<table>
+					<tr>
+						<td><label th:text="#{floodRisk.region}" /></td>
+						<td><input type="number" th:field="*{region}" /></td>
+					</tr>
+					<tr>
+						<td><label th:text="#{floodRisk.precipitationData}" /></td>
+						<td><input type="number" th:field="*{precipitationData}" /></td>
+					</tr>
+					<tr>
+						<td><label th:text="#{floodRisk.dateOccurence}" /></td>
+						<td><input type="date" th:field="*{dateOccurence}" /></td>
+					</tr>
+					<tr>
+						<td><label th:text="#{floodRisk.riskLevel}" /></td>
+						<td><input type="number" th:field="*{riskLevel}" /></td>
+					</tr>
+					<tr>
+						<td><input type="submit" value="Submit" /></td>
+					</tr>
+				</table>
+			</form>
 		</main>
 
 		<div th:replace="~{layout :: footer}"></div>

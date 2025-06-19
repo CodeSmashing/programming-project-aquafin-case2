@@ -60,7 +60,6 @@ main {
 }
 
 form {
-	margin-bottom: 20px;
 	padding: 10px;
 	border-radius: 8px;
 	box-shadow: 0 2px 5px;
@@ -94,153 +93,15 @@ footer {
 	}
 }
 
-/*
-table#rainfallTableBarChart {
+table {
+	/*
 	display: grid;
 	grid-template-columns: 100px auto;
 	grid-template-rows: auto 60px;
 	grid-template-areas:
 		"Ruler Content Content"
 		"Year Months Months";
-	padding: 20px;
-
-	tr {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-
-		td,
-		th {
-			width: 100%;
-			text-align: center;
-		}
-	}
-
-	thead {
-		grid-area: Ruler / Year / Year / Ruler;
-
-		display: grid;
-		grid-template-rows: auto 60px;
-		grid-template-areas:
-			"Rulers"
-			"Year";
-
-		>tr:nth-of-type(1) {
-			grid-area: Rulers;
-			justify-content: space-between;
-			padding-block: 20px;
-
-			.rule {
-				transform: rotate(-135deg);
-				white-space: nowrap;
-				writing-mode: vertical-rl;
-			}
-		}
-
-		>tr:nth-of-type(2) {
-			grid-area: Year;
-			justify-content: center;
-		}
-	}
-
-	tbody {
-		grid-area: Content;
-
-		>tr {
-			display: grid;
-			grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto;
-			grid-template-rows: repeat(50, auto);
-
-			padding-inline: 10px;
-			gap: 10px;
-			height: 100%;
-
-			[data-bar-value] {
-				grid-row: -1 / -2;
-				height: 100%;
-			}
-
-			[data-bar-value]:nth-of-type(1) {
-				grid-row: -1 / 0;
-			}
-
-			[data-bar-value]:nth-of-type(2) {
-				grid-row: -1 / 0;
-			}
-
-			[data-bar-value]:nth-of-type(3) {
-				grid-row: -1 / 0;
-			}
-
-			[data-bar-value]:nth-of-type(4) {
-				grid-row: -1 / 0;
-			}
-
-			[data-bar-value]:nth-of-type(5) {
-				grid-row: -1 / 0;
-			}
-
-			[data-bar-value]:nth-of-type(6) {
-				grid-row: -1 / 0;
-			}
-
-			[data-bar-value]:nth-of-type(7) {
-				grid-row: -1 / 0;
-			}
-
-			[data-bar-value]:nth-of-type(8) {
-				grid-row: -1 / 0;
-			}
-
-			[data-bar-value]:nth-of-type(9) {
-				grid-row: -1 / 0;
-			}
-
-			[data-bar-value]:nth-of-type(10) {
-				grid-row: -1 / 0;
-			}
-
-			[data-bar-value]:nth-of-type(11) {
-				grid-row: -1 / 0;
-			}
-
-			[data-bar-value]:nth-of-type(12) {
-				grid-row: -1 / 0;
-			}
-		}
-	}
-
-	tfoot {
-		grid-area: Months;
-		padding-inline: 10px;
-
-		>tr {
-			display: grid;
-			grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto;
-			gap: 10px;
-			height: 100%;
-		}
-	}
-
-	span {
-		text-align: center;
-		margin: auto 0;
-	}
-}
-
-h3 {
-	padding: 20px 10px;
-	margin: 0;
-	margin-bottom: 20px;
-}
-
-h4 {
-	padding: 20px 10px;
-	margin: 0;
-	margin-bottom: 20px;
-}
-
-table {
+	*/
 	padding: 20px;
 	margin-bottom: 20px;
 	width: 100%;
@@ -258,6 +119,25 @@ table {
 	th {
 		text-align: left;
 	}
+
+	thead>tr:where(:not([name="filter-row"])) {
+		th {
+			cursor: pointer;
+		}
+	}
+}
+
+/*
+h3 {
+	padding: 20px 10px;
+	margin: 0;
+	margin-bottom: 20px;
+}
+
+h4 {
+	padding: 20px 10px;
+	margin: 0;
+	margin-bottom: 20px;
 }
 
 canvas {
@@ -268,21 +148,7 @@ canvas {
 	width: 100%;
 	box-sizing: border-box;
 }
-
-.bad {
-	padding: 5px 10px;
-	border-radius: 4px;
-}
-
-.good {
-	padding: 5px 10px;
-	border-radius: 4px;
-}
-
-.marginal {
-	padding: 5px 10px;
-	border-radius: 4px;
-}*/
+*/
 
 input,
 [type="text"],
