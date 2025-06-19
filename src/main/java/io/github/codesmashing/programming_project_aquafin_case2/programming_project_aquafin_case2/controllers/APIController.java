@@ -48,7 +48,7 @@ public class APIController {
 	public ResponseEntity<?> getPrecipitationPerRegionPerMonth(
 			@RequestParam(value = "region_id", required = false) Integer id,
 			@RequestParam(value = "region_name", required = false) String name,
-			@RequestParam("date") String dateString) {
+			@RequestParam("date") @DateTimeFormat(pattern = "dd/MM/yyyy") String dateString) {
 		LocalDate date;
 
 		try {
@@ -83,11 +83,16 @@ public class APIController {
 		return ResponseEntity.ok(precipitationOptional.get());
 	}
 
-	@GetMapping({ "/flood-risks" })
+	@GetMapping({ "/flood-risk/all" })
+	public ResponseEntity<Iterable<FloodRisk>> getFloodRisks() {
+		return ResponseEntity.ok(floodRiskDAO.findAll());
+	}
+
+	@GetMapping({ "/flood-risk" })
 	public ResponseEntity<?> getFloodRiskPerRegionPerMonth(
 			@RequestParam(value = "region_id", required = false) Integer id,
 			@RequestParam(value = "region_name", required = false) String name,
-			@RequestParam("date") String dateString) {
+			@RequestParam("date") @DateTimeFormat(pattern = "dd/MM/yyyy") String dateString) {
 		LocalDate date;
 
 		try {

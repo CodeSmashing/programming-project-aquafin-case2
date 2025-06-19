@@ -2,6 +2,8 @@ package io.github.codesmashing.programming_project_aquafin_case2.programming_pro
 
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.*;
@@ -30,6 +32,7 @@ public class FloodRisk {
 
     @NotNull
     @Column(nullable = false)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate dateOccurence;
 
     @NotNull

@@ -63,6 +63,21 @@ and this project (tries) to adhere to [Semantic Versioning](https://semver.org/s
 - Added a filter form and chart section to `index.html` for better user interaction and data visualization.
 - Updated `layout.html` to improve navigation bar styling and structure, including the addition of a logo and responsive design adjustments.
 
+## [3.3.0] - 2025-06-18
+
+### Added
+
+- Added `@DateTimeFormat` annotation to `FloodRisk` and `PrecipitationData` models for consistent date formatting (`dd/MM/yyyy`).
+- Introduced new endpoint `/flood-risk/all` in `APIController` for retrieving all flood risks.
+- Added `saveFloodRisk` method in `WebController` for handling form submissions of flood risk data (incomplete).
+- Added `getFloodRisk` method in `WebController` to fetch flood risk data from the API and display it on the index page (incomplete).
+
+### Updated
+
+- Updated `/flood-risks` endpoint in `APIController` to `/flood-risk`.
+- Refactored `WebController` to include `@ModelAttribute` for initializing blank `FloodRisk` objects.
+- Updated `APIController` to use `@DateTimeFormat` for parsing date query parameters.
+
 ## [3.2.0] - 2025-06-18
 
 ### Removed
@@ -310,6 +325,7 @@ and this project (tries) to adhere to [Semantic Versioning](https://semver.org/s
 - [MIT license](LICENSE)
 
 <!-- [Unreleased]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v -->
+[3.3.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v3.3.0
 [3.2.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v3.2.0
 [3.1.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v3.1.0
 [3.0.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v3.0.0
