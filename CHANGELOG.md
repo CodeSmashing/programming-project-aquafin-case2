@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project (tries) to adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.3.1] - 2025-06-19
+
+### Updated
+
+- Refactored `WebController`:
+  - Changed `saveFloodRisk` method to use `@PostMapping` instead of `@RequestMapping` for better readability and consistency.
+  - Added `@Valid` annotation and `BindingResult` parameter to `saveFloodRisk` for handling validation errors.
+  - Updated `saveFloodRisk` to redirect to `/index` after saving a `FloodRisk` entity.
+
 ## [3.3.0] - 2025-06-18
 
 ### Added
@@ -266,6 +275,7 @@ and this project (tries) to adhere to [Semantic Versioning](https://semver.org/s
 - [Git Ignore](.gitignore) and [Git Attributes](.gitattributes) for repository management.
 - [MIT license](LICENSE)
 
+[3.3.1]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v3.3.1
 [3.3.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v3.3.0
 [3.2.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v3.2.0
 [3.1.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v3.1.0
