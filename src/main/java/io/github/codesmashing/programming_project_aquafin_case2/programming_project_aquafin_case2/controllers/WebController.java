@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +22,7 @@ import io.github.codesmashing.programming_project_aquafin_case2.programming_proj
 import io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.models.DAO.FloodRiskDAO;
 import io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.models.DAO.PrecipitationDataDAO;
 import io.github.codesmashing.programming_project_aquafin_case2.programming_project_aquafin_case2.models.DAO.RegionDAO;
+import jakarta.validation.Valid;
 
 @Controller
 public class WebController {
@@ -104,9 +107,9 @@ public class WebController {
 		return "index";
 	}
 
-	@RequestMapping(value = "/save/floodRisk", method = RequestMethod.POST)
-	public String saveFloodRisk(Model model, @ModelAttribute("floodRisk") FloodRisk floodRisk) {
+	@PostMapping("/save/floodRisk")
+	public String saveFloodRisk(@Valid FloodRisk floodRisk, BindingResult bindingResult) {
 		// logic to process input data
-		return "index";
+		return "redirect:/index";
 	}
 }

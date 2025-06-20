@@ -113,6 +113,15 @@ and this project (tries) to adhere to [Semantic Versioning](https://semver.org/s
 - Added a filter form and chart section to `index.html` for better user interaction and data visualization.
 - Updated `layout.html` to improve navigation bar styling and structure, including the addition of a logo and responsive design adjustments.
 
+## [3.3.1] - 2025-06-19
+
+### Updated
+
+- Refactored `WebController`:
+  - Changed `saveFloodRisk` method to use `@PostMapping` instead of `@RequestMapping` for better readability and consistency.
+  - Added `@Valid` annotation and `BindingResult` parameter to `saveFloodRisk` for handling validation errors.
+  - Updated `saveFloodRisk` to redirect to `/index` after saving a `FloodRisk` entity.
+
 ## [3.3.0] - 2025-06-18
 
 ### Added
@@ -375,6 +384,7 @@ and this project (tries) to adhere to [Semantic Versioning](https://semver.org/s
 - [MIT license](LICENSE)
 
 <!-- [Unreleased]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v -->
+[3.3.1]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v3.3.1
 [3.3.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v3.3.0
 [3.2.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v3.2.0
 [3.1.0]: https://github.com/CodeSmashing/programming-project-aquafin-case2/releases/tag/v3.1.0
