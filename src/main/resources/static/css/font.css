@@ -14,3 +14,14 @@ a {
 h1 {
 	text-align: center;
 }
+
+a,
+button {
+	font-weight: 600;
+	font-size: medium;
+}
+
+select {
+	font-weight: 500;
+	font-size: medium;
+}

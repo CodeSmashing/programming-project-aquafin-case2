@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project (tries) to adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+- Introduced `.button-style` class in `colors.css` and `style.css` to add button styling to different non-button elements.
+- Added `.filtered` class in `style.css` for disabled-like styling with hover effects.
+- Added font styling for `a`, `button`, and `select` elements in `font.css` to improve consistency.
+
+### Updated
+
+- Added `.active` state for buttons in `colors.css`.
+- Refactored `style.css`:
+  - Added styling for `form` elements to center-align content.
+  - Enhanced table styling with new rules for `#flood-risk-table`.
+- Updated `init.js`:
+  - Refactored to use double quotes instead of single quotes for consistency.
+
 ## [Unreleased] - 2025-06-19
 
 ### Added

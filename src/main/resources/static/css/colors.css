@@ -149,11 +149,13 @@ select {
 
 button,
 [type="button"],
-[type="submit"] {
+[type="submit"],
+.button-style {
 	background-color: var(--background-tertiary);
 	color: var(--text);
 	box-shadow: var(--box-shadow-small);
 
+	&.active,
 	&:hover {
 		background-color: var(--background-tertiary-hover);
 	}
