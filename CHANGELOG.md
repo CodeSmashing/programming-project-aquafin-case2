@@ -9,6 +9,30 @@ and this project (tries) to adhere to [Semantic Versioning](https://semver.org/s
 
 ### Added
 
+- Refactored `flood-risk-table-handler.js` for dynamically filtering flood risk data based on region, date, and type (historic or forecast).
+- Added new buttons in `index.html` for filtering flood risk data (`Enkel historisch`, `Enkel voorspelling`, `Enkel resultaten`) and revealing hidden items.
+
+### Updated
+
+- Refactored `flood-risk-table-handler.js`:
+  - Improved filtering logic for flood risk data based on region and date.
+  - Added functionality to toggle filters for historic, forecast, and results data.
+  - Enhanced table rendering with dynamic row reordering and visibility toggling.
+- Updated `index.html`:
+  - Enhanced table structure with additional attributes for flood risk data (`data-name`, `data-date`, `data-type`, etc.).
+  - Improved dropdowns for region and date filtering with better handling of unavailable options.
+  - Added dynamic messages for unavailable or hidden data in the flood risk table.
+  - Updated the form with the action to `saveFloodRisk` to use the action `save/floodRisk`.
+  - Updated the form with the action `save/floodRisk` to use an id (`add-flood-risk-form`) and to use placeholders for input fields.
+
+### Removed
+
+- Removed redundant filtering logic from `flood-risk-table-handler.js`.
+
+## [Unreleased]
+
+### Added
+
 - Introduced `.button-style` class in `colors.css` and `style.css` to add button styling to different non-button elements.
 - Added `.filtered` class in `style.css` for disabled-like styling with hover effects.
 - Added font styling for `a`, `button`, and `select` elements in `font.css` to improve consistency.
