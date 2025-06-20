@@ -2,6 +2,7 @@ package io.github.codesmashing.programming_project_aquafin_case2.programming_pro
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -109,7 +110,64 @@ public class WebController {
 
 	@PostMapping("/save/floodRisk")
 	public String saveFloodRisk(@Valid FloodRisk floodRisk, BindingResult bindingResult) {
-		// logic to process input data
+		// Resolve the Region object using the submitted region ID
+		String regionName = (String) bindingResult.getFieldValue("region");
+		String precipitationDataIdStr = (String) bindingResult.getFieldValue("precipitationData");
+		String dateOccurence = (String) bindingResult.getFieldValue("dateOccurence");
+		String riskLevel = (String) bindingResult.getFieldValue("riskLevel");
+		Integer precipitationDataId = null;
+		LocalDate dateOccurenceFormatted = null;
+		Integer riskLevelFormatted = null;
+
+		try {
+			precipitationDataId = Integer.parseInt(precipitationDataIdStr);
+		} catch (NumberFormatException e) {
+			bindingResult.rejectValue("precipitationData", "error.precipitationData",
+					"Invalid precipitationData ID format.");
+			return "index";
+		}
+
+		try {
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+			dateOccurenceFormatted = LocalDate.parse(dateOccurence, formatter);
+		} catch (NumberFormatException e) {
+			bindingResult.rejectValue("dateOccurence", "error.dateOccurence",
+					"Invalid date format.");
+			return "index";
+		}
+
+		try {
+			riskLevelFormatted = Integer.parseInt(riskLevel);
+		} catch (NumberFormatException e) {
+			bindingResult.rejectValue("riskLevel", "error.riskLevel",
+					"Invalid riskLevel format.");
+			return "index";
+		}
+
+		Optional<Region> region = regionDAO.findByRegionName(regionName);
+		Optional<PrecipitationData> precipitationData = precipitationDataDAO.findById(precipitationDataId);
+
+		if (!region.isPresent()) {
+			bindingResult.rejectValue("region", "error.region", "Invalid region selected.");
+			return "index";
+		}
+
+		if (!precipitationData.isPresent()) {
+			bindingResult.rejectValue("precipitationData", "error.precipitationData",
+					"Invalid precipitationData ID given.");
+			return "index";
+		}
+
+		if (bindingResult.hasErrors()) {
+			return "index";
+		}
+
+		floodRisk.setRegion(region.get());
+		floodRisk.setPrecipitationData(precipitationData.get());
+		floodRisk.setDateOccurence(dateOccurenceFormatted);
+		floodRisk.setRiskLevel(riskLevelFormatted);
+		floodRiskDAO.save(floodRisk);
+
 		return "redirect:/index";
 	}
 }

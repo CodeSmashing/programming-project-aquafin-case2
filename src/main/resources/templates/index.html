@@ -126,17 +126,24 @@
 				<table>
 					<tr>
 						<td><label th:text="#{floodRisk.region}" /></td>
-						<td><input
-								type="number"
+						<td><select
 								th:field="*{region}"
-								placeholder="Regio" /></td>
+								placeholder="Regio">
+								<option
+									th:each="region : ${regionList}"
+									th:text="${region.regionName}"
+									th:value="${region.regionName.toLowerCase()}">
+									Regio
+								</option>
+							</select>
+						</td>
 					</tr>
 					<tr>
 						<td><label th:text="#{floodRisk.precipitationData}" /></td>
 						<td><input
 								type="number"
 								th:field="*{precipitationData}"
-								placeholder="Neerslag" /></td>
+								placeholder="Neerslag (id)" /></td>
 					</tr>
 					<tr>
 						<td><label th:text="#{floodRisk.dateOccurence}" /></td>
